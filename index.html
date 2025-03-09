@@ -30,22 +30,22 @@
             pointer-events: none;
         }
         #canto-image3 {
-            display: none; /* Escondido por padrão */
+            display: none;
             position: fixed;
             bottom: 0;
             right: 0;
-            height: 50vh; /* Metade da altura da tela, igual às outras em mobile */
+            height: 50vh;
             width: auto;
             max-width: 200px;
             z-index: 5;
             pointer-events: none;
         }
         #canto-image4 {
-            display: none; /* Escondido por padrão */
+            display: none;
             position: fixed;
             bottom: 0;
             left: 0;
-            height: 50vh; /* Metade da altura da tela, igual às outras em mobile */
+            height: 50vh;
             width: auto;
             max-width: 200px;
             z-index: 5;
@@ -111,6 +111,7 @@
             align-items: center;
             font-size: 2em;
             color: #ffffff;
+            position: relative;
         }
         #section1 { background-color: #ffffff; }
         #section2 { background-color: #ffffff; }
@@ -173,7 +174,6 @@
             width: 100%;
             height: 100%;
         }
-        /* Estilos do menu retrátil */
         #hamburger {
             display: none;
             font-size: 24px;
@@ -232,7 +232,7 @@
                 max-width: 200px;
             }
             #canto-image3, #canto-image4 {
-                display: block; /* Visível apenas em mobile */
+                display: block;
             }
             #muro-image {
                 width: 200px;
@@ -243,9 +243,9 @@
             .contact-container {
                 padding: 10px;
                 max-width: 80%;
-                top: 50%; /* Centralizado verticalmente no mobile */
-                left: 50%; /* Centralizado horizontalmente no mobile */
-                transform: translate(-50%, -50%) !important; /* Força a centralização no mobile */
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) !important;
             }
             .contact-container select,
             .contact-container input {
@@ -259,7 +259,7 @@
         }
         #header-image {
             position: absolute;
-            top: 30%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 30%;
@@ -299,9 +299,9 @@
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* Posicionamento padrão no desktop */
-            opacity: 0; /* Escondido por padrão */
-            visibility: hidden; /* Escondido por padrão */
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            visibility: hidden;
         }
         .contact-container.visible {
             opacity: 1;
@@ -345,6 +345,68 @@
         .contact-container #fixed-contact p {
             margin: 5px 0;
         }
+        .pulsar {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: auto;
+            z-index: 6;
+            animation: heartbeat 1.5s infinite ease-in-out;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .pulsar.hidden {
+            opacity: 0;
+            transform: translate(-50%, -60%) scale(0.8);
+        }
+        @keyframes heartbeat {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        @media (max-width: 600px) {
+            .pulsar {
+                width: 150px;
+                top: 50%;
+            }
+        }
+        #phrase1 {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: auto;
+            z-index: 7;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        #phrase2 {
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: auto;
+            z-index: 7;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        #phrase1.hidden, #phrase2.hidden {
+            opacity: 0;
+        }
+        @media (max-width: 600px) {
+            #phrase1, #phrase2 {
+                width: 300px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -376,6 +438,8 @@
     <img src="images/CANTO3.png" alt="Borda Canto Direito Inferior" id="canto-image3">
     <img src="images/CANTO4.png" alt="Borda Canto Esquerdo Inferior" id="canto-image4">
     
+    <img src="images/logo1.png" alt="Logo Pulsante" class="pulsar">
+    
     <img src="images/house.png" alt="Imagem de cabeçalho" id="header-image" onload="console.log('Imagem carregada com sucesso')" onerror="console.log('Erro ao carregar a imagem')">
     
     <div id="section1" class="section">
@@ -398,15 +462,16 @@
                 <p id="fixed-contact-detail"></p>
             </div>
         </div>
+        <img src="images/1frase.png" alt="Frase 1" id="phrase1">
     </div>
     <div id="section2" class="section">
+        <img src="images/2frase.png" alt="Frase 2" id="phrase2">
         Section 2
         <img src="images/DDG.png" alt="Imagem na Section 2" id="creation-image" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
         <img src="images/MURO.png" alt="Imagem Muro" id="muro-image" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
     </div>
     
     <script>
-        // Código de controle de scroll
         window.onscroll = function() {
             let scrollPos = window.scrollY;
             let maxScroll = document.body.scrollHeight - window.innerHeight;
@@ -417,6 +482,9 @@
             let headerImage = document.getElementById('header-image');
             let initialContact = document.getElementById('initial-contact');
             let detailsContact = document.getElementById('details-contact');
+            let logoPulsar = document.querySelector('.pulsar');
+            let phrase1 = document.getElementById('phrase1');
+            let phrase2 = document.getElementById('phrase2');
 
             if (scrollPos > 50) {
                 menu.classList.add('hidden');
@@ -424,13 +492,18 @@
                 menu.classList.remove('hidden');
             }
 
-            // Controle de visibilidade do formulário
+            if (scrollPos >= sectionHeight) {
+                logoPulsar.classList.add('hidden');
+            } else {
+                logoPulsar.classList.remove('hidden');
+            }
+
             if (scrollPos >= sectionHeight) {
                 initialContact.classList.add('visible');
-                detailsContact.classList.remove('section2'); // Remove qualquer posicionamento extra
+                detailsContact.classList.remove('section2');
             } else {
                 initialContact.classList.remove('visible');
-                detailsContact.classList.add('hidden'); // Garante que details-contact suma
+                detailsContact.classList.add('hidden');
             }
 
             if (scrollPos >= sectionHeight) {
@@ -445,7 +518,6 @@
                 muroImage.classList.add('hidden');
             }
 
-            // Controle da imagem house.png apenas em mobile
             if (window.innerWidth <= 600) {
                 if (scrollPos >= sectionHeight) {
                     headerImage.classList.add('header');
@@ -455,9 +527,22 @@
                     headerImage.classList.remove('visible');
                 }
             }
+
+            // Controle das imagens de transição
+            if (scrollPos >= 2 * sectionHeight) {
+                phrase1.classList.add('hidden'); // 1frase.png some no final da section2
+            } else {
+                phrase1.classList.remove('hidden');
+            }
+
+            // 2frase.png some assim que entrar na section2, antes de house.png aparecer
+            if (scrollPos >= sectionHeight) {
+                phrase2.classList.add('hidden');
+            } else {
+                phrase2.classList.remove('hidden');
+            }
         }
 
-        // Código do batimento cardíaco
         const ecgCanvas = document.getElementById('ecgCanvas');
         const ctx = ecgCanvas.getContext('2d');
         const ecgWidth = ecgCanvas.width;
@@ -533,7 +618,6 @@
         initializeEcgPoints();
         animateEcg();
 
-        // Eventos do formulário de contato
         document.getElementById('contact-select').addEventListener('change', function() {
             let selectedValue = this.value;
             let initialContact = document.getElementById('initial-contact');
@@ -596,10 +680,21 @@
             document.getElementById('contact-select').value = '';
         });
 
-        // Lógica do menu retrátil
         document.getElementById('hamburger').addEventListener('click', function() {
             let mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('active');
+        });
+
+        const logo = document.querySelector('.pulsar');
+        let isAnimating = true;
+
+        logo.addEventListener('click', () => {
+            if (isAnimating) {
+                logo.style.animationPlayState = 'paused';
+            } else {
+                logo.style.animationPlayState = 'running';
+            }
+            isAnimating = !isAnimating;
         });
     </script>
 </body>
