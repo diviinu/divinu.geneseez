@@ -1,3 +1,6 @@
+backup site com atomo 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +57,7 @@
         #creation-image {
             position: fixed;
             bottom: 20px;
-            right: 90px;
+            right: 70px;
             width: 250px;
             max-height: 2000px;
             z-index: 10;
@@ -90,6 +93,14 @@
             margin: 0;
             background-color: #ffffff;
             overflow-x: hidden;
+        }
+        canvas#p5canvas {
+            display: block;
+            max-width: 100%;
+            height: auto !important;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
         #controls {
             position: fixed;
@@ -131,7 +142,7 @@
             background: rgba(255, 255, 255, 0.1);
             color: #000000;
             font-family: 'Roboto', sans-serif;
-            font-size: 12px;
+            font-size: 18px;
             font-weight: 700;
             text-transform: uppercase;
             transition: opacity 0.3s ease;
@@ -236,13 +247,20 @@
             }
             #muro-image {
                 width: 200px;
-                top: 88px;
+                top: 30px;
                 left: 25%;
                 transform: translateX(-50%);
             }
             .contact-container {
                 padding: 10px;
                 max-width: 80%;
+                top: 85%;
+                transform: translateY(-50%);
+            }
+            .contact-container.section2 {
+                top: 85%;
+                left: 20px;
+                transform: translateY(-50%);
             }
             .contact-container select,
             .contact-container input {
@@ -259,7 +277,7 @@
             top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 30%;
+            width: 50%;
             max-height: 100px;
             object-fit: cover;
             z-index: 5;
@@ -268,7 +286,6 @@
         @media (max-width: 600px) {
             #header-image {
                 opacity: 1;
-                width: 250px;
             }
             #header-image.header {
                 position: fixed;
@@ -295,14 +312,14 @@
             z-index: 15;
             position: fixed;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Centralizado por padrão */
-            opacity: 0; /* Escondido por padrão */
-            visibility: hidden; /* Escondido por padrão */
+            right: 40px;
+            transform: translateY(-50%);
+            transition: all 0.5s ease;
         }
-        .contact-container.visible {
+        .contact-container.section2 {
+            right: auto;
+            left: 20px;
             opacity: 1;
-            visibility: visible;
         }
         .contact-container.hidden {
             opacity: 0;
@@ -402,56 +419,244 @@
         <img src="images/MURO.png" alt="Imagem Muro" id="muro-image" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
     </div>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
     <script>
-        // Código de controle de scroll
-        window.onscroll = function() {
-            let scrollPos = window.scrollY;
-            let maxScroll = document.body.scrollHeight - window.innerHeight;
-            let sectionHeight = window.innerHeight;
-            let menu = document.getElementById('menu');
-            let creationImage = document.getElementById('creation-image');
-            let muroImage = document.getElementById('muro-image');
-            let headerImage = document.getElementById('header-image');
-            let initialContact = document.getElementById('initial-contact');
-            let detailsContact = document.getElementById('details-contact');
+        // Código do átomo (p5.js)
+        let ringAngle1 = 0, ringAngle2 = 0, ringAngle3 = 0, ringAngle4 = 0;
+        let nucleusAngle1 = 0, nucleusAngle2 = 0;
+        let electronAngle1 = 0, electronAngle2 = 0, electronAngle3 = 0, electronAngle4 = 0;
+        let orbitX = 0, orbitY = window.innerWidth <= 600 ? -window.innerHeight * 0.6 : -window.innerHeight * 0.45;
+        let orbitAngle = 0;
+        let isPaused = false;
+        let ringSpeed = 0.25, electronSpeedFactor = 1;
+        let targetOrbitY = orbitY;
+        let photons = [];
+        let scaleFactor = 1.3;
 
-            if (scrollPos > 50) {
-                menu.classList.add('hidden');
-            } else {
-                menu.classList.remove('hidden');
-            }
+        function setup() {
+            window.onscroll = function() {
+                let scrollPos = window.scrollY;
+                let maxScroll = document.body.scrollHeight - window.innerHeight;
+                let sectionHeight = window.innerHeight;
+                let initialContact = document.getElementById('initial-contact');
+                let detailsContact = document.getElementById('details-contact');
+                let menu = document.getElementById('menu');
+                let creationImage = document.getElementById('creation-image');
+                let muroImage = document.getElementById('muro-image');
+                let headerImage = document.getElementById('header-image');
 
-            // Controle de visibilidade do formulário
-            if (scrollPos >= sectionHeight) {
-                initialContact.classList.add('visible');
-                detailsContact.classList.remove('section2'); // Remove qualquer posicionamento extra
-            } else {
-                initialContact.classList.remove('visible');
-                detailsContact.classList.add('hidden'); // Garante que details-contact suma
-            }
-
-            if (scrollPos >= sectionHeight) {
-                creationImage.classList.remove('hidden');
-                creationImage.classList.add('visible');
-                muroImage.classList.remove('hidden');
-                muroImage.classList.add('visible');
-            } else {
-                creationImage.classList.remove('visible');
-                creationImage.classList.add('hidden');
-                muroImage.classList.remove('visible');
-                muroImage.classList.add('hidden');
-            }
-
-            // Controle da imagem house.png apenas em mobile
-            if (window.innerWidth <= 600) {
-                if (scrollPos >= sectionHeight) {
-                    headerImage.classList.add('header');
-                    headerImage.classList.add('visible');
+                // Controle do átomo
+                if (window.innerWidth <= 600) {
+                    targetOrbitY = map(scrollPos, 0, maxScroll, -window.innerHeight * 0.6, window.innerHeight * 1.0);
+                    
+                    // Controle da imagem house.png apenas em mobile
+                    if (scrollPos >= sectionHeight) {
+                        headerImage.classList.add('header');
+                        headerImage.classList.add('visible');
+                    } else {
+                        headerImage.classList.remove('header');
+                        headerImage.classList.remove('visible');
+                    }
                 } else {
-                    headerImage.classList.remove('header');
-                    headerImage.classList.remove('visible');
+                    targetOrbitY = map(scrollPos, 0, maxScroll, -window.innerHeight * 0.45, window.innerHeight * 0.55);
+                }
+
+                if (scrollPos > 50) {
+                    menu.classList.add('hidden');
+                } else {
+                    menu.classList.remove('hidden');
+                }
+
+                if (scrollPos >= sectionHeight) {
+                    creationImage.classList.remove('hidden');
+                    creationImage.classList.add('visible');
+                    muroImage.classList.remove('hidden');
+                    muroImage.classList.add('visible');
+                } else {
+                    creationImage.classList.remove('visible');
+                    creationImage.classList.add('hidden');
+                    muroImage.classList.remove('visible');
+                    muroImage.classList.add('hidden');
                 }
             }
+            let canvasWidth = window.innerWidth * 0.9;
+            let canvasHeight = window.innerHeight * 2;
+            let canvas = createCanvas(canvasWidth, canvasHeight, WEBGL);
+            canvas.id('p5canvas');
+            angleMode(DEGREES);
+            frameRate(60);
+            ambientLight(150);
+            directionalLight(255, 255, 255, 0, 0, -1);
+            canvas.style.position = 'fixed';
+        }
+
+        function draw() {
+            background(255, 255, 255, 0);
+            drawBackgroundDetails();
+
+            let maxOrbit = min(width, height) * 0.05;
+            orbitAngle += 0.5;
+            orbitX = maxOrbit * cos(orbitAngle);
+            orbitY = lerp(orbitY, targetOrbitY, 0.15);
+            translate(orbitX, orbitY);
+
+            if (!isPaused) {
+                nucleusAngle1 += ringSpeed;
+                nucleusAngle2 += ringSpeed;
+                ringAngle1 += ringSpeed;
+                ringAngle2 += ringSpeed;
+                ringAngle3 += ringSpeed;
+                ringAngle4 += ringSpeed;
+                electronAngle1 += (90 / 60) * electronSpeedFactor;
+                electronAngle2 -= (90 / 60) * electronSpeedFactor;
+                electronAngle3 += (120 / 60) * electronSpeedFactor;
+                electronAngle4 += (120 / 60) * electronSpeedFactor;
+            }
+
+            drawNucleus(nucleusAngle1, 0);
+            drawNucleus(nucleusAngle2, 60);
+            let ringScale = window.innerWidth <= 600 ? 2.0 : 1.0;
+            let baseRadius = min(width, height) * 0.03 * scaleFactor * ringScale;
+            let outerRadius = min(width, height) * 0.045 * scaleFactor * ringScale;
+            drawRing(ringAngle1, -30, baseRadius, electronAngle1, electronSpeedFactor, 1.2, 0.8);
+            drawRing(ringAngle2, 60, baseRadius, electronAngle2, -electronSpeedFactor, 1.3, 0.7);
+            drawRing(ringAngle3, 0, outerRadius, electronAngle3, electronSpeedFactor, 1.5, 0.6);
+            drawRing(ringAngle4, 90, outerRadius, electronAngle4, electronSpeedFactor, 1.1, 0.9);
+
+            updateAndDrawPhotons();
+            addDynamicLighting();
+        }
+
+        function drawBackgroundDetails() {
+            push();
+            translate(-width / 2, -height / 2);
+            noStroke();
+            fill(240, 240, 240, 30);
+            for (let i = 0; i < 5; i++) {
+                let x = random(width);
+                let y = random(height);
+                let size = random(10, 30);
+                ellipse(x, y, size, size);
+            }
+            pop();
+        }
+
+        function drawNucleus(angle, tilt) {
+            push();
+            rotateY(angle);
+            rotateX(tilt);
+            noStroke();
+            fill(255, 0, 0);
+            ambientMaterial(255, 0, 0);
+            sphere(8 * scaleFactor);
+            pop();
+        }
+
+        function drawRing(angle, tilt, radius, electronAngle, speedFactor, aFactor = 1, bFactor = 1) {
+            push();
+            rotateY(angle);
+            rotateX(tilt);
+
+            let a = radius * aFactor;
+            let b = radius * bFactor;
+
+            for (let i = 0; i < 360; i += 10) {
+                let x = a * cos(i);
+                let z = b * sin(i);
+                let y = -5 * z / radius;
+                push();
+                translate(x, y, z);
+                fill(0, 0, 255, 150);
+                noStroke();
+                sphere(1 * scaleFactor);
+                pop();
+            }
+
+            let electronX = a * cos(electronAngle);
+            let electronZ = b * sin(electronAngle);
+            let electronY = -5 * electronZ / radius;
+            push();
+            translate(electronX, electronY, electronZ);
+            fill(0, 255, 0);
+            ambientMaterial(0, 255, 0);
+            sphere(2 * scaleFactor);
+
+            let glowIntensity = 150 + 100 * sin(frameCount * speedFactor);
+            pointLight(0, 255, 0, electronX, electronY, electronZ, glowIntensity);
+
+            if (!isPaused && random() < 0.05) {
+                photons.push({
+                    x: electronX,
+                    y: electronY,
+                    z: electronZ,
+                    vx: random(-1, 1),
+                    vy: random(-1, 1),
+                    vz: random(-1, 1),
+                    life: 60
+                });
+            }
+            pop();
+            pop();
+        }
+
+        function updateAndDrawPhotons() {
+            for (let i = photons.length - 1; i >= 0; i--) {
+                let p = photons[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.z += p.vz;
+                p.life--;
+
+                push();
+                translate(p.x, p.y, p.z);
+                fill(255, 255, 0, map(p.life, 0, 60, 0, 255));
+                noStroke();
+                sphere(0.5);
+                pop();
+
+                if (p.life <= 0) {
+                    photons.splice(i, 1);
+                }
+            }
+        }
+
+        function mousePressed() {
+            isPaused = !isPaused;
+            updateStatus();
+        }
+
+        function mouseDragged() {
+            ringSpeed = map(mouseX, 0, width, 0.1, 0.5);
+            electronSpeedFactor = map(mouseY, 0, height, 0.5, 2);
+        }
+
+        function keyPressed() {
+            if (key === 'P' || key === 'p') {
+                isPaused = !isPaused;
+                updateStatus();
+            } else if (key === 'R' || key === 'r') {
+                ringSpeed = 0.25;
+                electronSpeedFactor = 1;
+            }
+        }
+
+        function updateStatus() {
+            document.getElementById('status') && (document.getElementById('status').textContent = isPaused ? 'Paused' : 'Running');
+        }
+
+        function addDynamicLighting() {
+            push();
+            let time = frameCount * 0.1;
+            pointLight(255, 255, 0, 100 * cos(time), 100 * sin(time), -50);
+            pop();
+        }
+
+        function windowResized() {
+            let canvasWidth = window.innerWidth * 0.9;
+            let canvasHeight = window.innerHeight * 2;
+            resizeCanvas(canvasWidth, canvasHeight);
+            orbitY = window.innerWidth <= 600 ? -window.innerHeight * 0.6 : -window.innerHeight * 0.45;
+            targetOrbitY = orbitY;
         }
 
         // Código do batimento cardíaco
