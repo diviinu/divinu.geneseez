@@ -69,7 +69,7 @@
         #muro-image {
             position: fixed;
             top: 20px;
-            left: 300px;
+            left: 120px;
             width: 400px;
             max-height: 2000px;
             z-index: 10;
@@ -243,6 +243,9 @@
             .contact-container {
                 padding: 10px;
                 max-width: 80%;
+                top: 50%; /* Centralizado verticalmente no mobile */
+                left: 50%; /* Centralizado horizontalmente no mobile */
+                transform: translate(-50%, -50%) !important; /* Força a centralização no mobile */
             }
             .contact-container select,
             .contact-container input {
@@ -296,7 +299,7 @@
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* Centralizado por padrão */
+            transform: translate(-50%, -50%); /* Posicionamento padrão no desktop */
             opacity: 0; /* Escondido por padrão */
             visibility: hidden; /* Escondido por padrão */
         }
