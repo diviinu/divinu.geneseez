@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importando a fonte Roboto usada no menu -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <title>Menu com ECG - Studio Geneseez</title>
+    <style>
+        #menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #000000;
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+            z-index: 20;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #menu.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #menu-left {
+            display: flex;
+            gap: 20px;
+        }
+        #menu-right {
+            margin-right: 20px;
+        }
+        #menu a {
+            color: #000000;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        #menu a:hover {
+            color: #555555;
+        }
+        #ecg-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 50px;
+            z-index: 15;
+        }
+        #ecgCanvas {
+            width: 100%;
+            height: 100%;
+        }
+        #hamburger {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: #000000;
+            cursor: pointer;
+            z-index: 25;
+        }
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            flex-direction: column;
+            padding: 10px;
+            z-index: 20;
+            transition: transform 0.3s ease;
+            transform: translateX(-100%);
+        }
+        #mobile-menu.active {
+            display: flex;
+            transform: translateX(0);
+        }
+        #mobile-menu a {
+            color: #000000;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #mobile-menu a:hover {
+            color: #555555;
+        }
+
+        /* Estilos para Mobile (max-width: 600px) */
+        @media (max-width: 600px) {
+            #menu {
+                padding: 10px;
+                justify-content: flex-start;
+                height: 60px;
+            }
+            #menu-left, #menu-right {
+                display: none;
+            }
+            #hamburger {
+                display: block;
+                margin-left: 10px;
+            }
+            #ecg-container {
+                width: 200px;
+                height: 30px;
+                left: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="menu">
+        <button id="hamburger">☰</button>
+        <div id="ecg-container">
+            <canvas id="ecgCanvas" width="300" height="50"></canvas>
+        </div>
+        <div id="menu-left">
+            <a href="/models/index.html">Início</a>
+            <a href="/models/catalogo.html">Catálogo</a>
+            <a href="/models/contato.html">Contato</a>
+            <a href="/models/quemsomos.html">Quem Somos</a>
+        </div>
+        <div id="menu-right">
+            <a href="/models/sejamembro.html">Seja Membro</a>
+        </div>
+    </nav>
+    <div id="mobile-menu">
+        <a href="/models/index.html">Início</a>
+        <a href="/models/catalogo.html">Catálogo</a>
+        <a href="/models/contato.html">Contato</a>
+        <a href="/models/quemsomos.html">Quem Somos</a>
+        <a href="/models/sejamembro.html">Seja Membro</a>
+    </div>
+
+    <script>
+        // Evento para abrir/fechar o menu mobile
+        document.getElementById('hamburger').addEventListener('click', function() {
+            let mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Lógica para esconder o menu ao rolar
+        window.onscroll = function() {
+            let scrollPos = window.scrollY;
+            let menu = document.getElementById('menu');
+            if (scrollPos > 50) {
+                menu.classList.add('hidden');
+            } else {
+                menu.classList.remove('hidden');
+            }
+        };
+
+        // Lógica do ECG Canvas
+        const ecgCanvas = document.getElementById('ecgCanvas');
+        const ctx = ecgCanvas.getContext('2d');
+        const ecgWidth = ecgCanvas.width;
+        const ecgHeight = ecgCanvas.height;
+        let ecgPoints = [];
+        let ecgTime = 0;
+        const ecgSpeed = 2;
+        const ecgAmplitude = 15;
+        const ecgMaxPoints = 150;
+
+        function getHeartbeatY(x) {
+            const beat = Math.sin(x * 0.1) * Math.cos(x * 0.05);
+            const spike = Math.sin(x * 0.5) > 0.9 ? 1.5 : 1;
+            return (ecgHeight / 2) - (beat * ecgAmplitude * spike);
+        }
+
+        function initializeEcgPoints() {
+            ecgPoints = [];
+            for (let x = 0; x <= ecgWidth; x += ecgSpeed) {
+                ecgPoints.push({
+                    x: x,
+                    y: getHeartbeatY(x)
+                });
+            }
+        }
+
+        function drawSmoothEcgLine() {
+            ctx.clearRect(0, 0, ecgWidth, ecgHeight);
+            ctx.beginPath();
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 1;
+            ctx.lineJoin = 'round';
+
+            if (ecgPoints.length > 2) {
+                ctx.moveTo(ecgPoints[0].x, ecgPoints[0].y);
+
+                for (let i = 1; i < ecgPoints.length - 1; i++) {
+                    const xc = (ecgPoints[i].x + ecgPoints[i + 1].x) / 2;
+                    const yc = (ecgPoints[i].y + ecgPoints[i + 1].y) / 2;
+                    ctx.quadraticCurveTo(ecgPoints[i].x, ecgPoints[i].y, xc, yc);
+
+                    const opacity = i / (ecgPoints.length - 1);
+                    ctx.strokeStyle = `rgba(0, 0, 0, ${opacity})`;
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(xc, yc);
+                }
+
+                ctx.lineTo(ecgPoints[ecgPoints.length - 1].x, ecgPoints[ecgPoints.length - 1].y);
+                ctx.strokeStyle = 'rgba(0, 0, 0, 0)';
+                ctx.stroke();
+            }
+        }
+
+        function animateEcg() {
+            for (let i = 0; i < ecgPoints.length; i++) {
+                ecgPoints[i].x -= ecgSpeed;
+            }
+
+            if (ecgPoints[0].x < -ecgSpeed) {
+                ecgPoints.shift();
+                ecgTime += ecgSpeed;
+                ecgPoints.push({
+                    x: ecgWidth,
+                    y: getHeartbeatY(ecgTime)
+                });
+            }
+
+            drawSmoothEcgLine();
+            requestAnimationFrame(animateEcg);
+        }
+
+        // Inicializa e anima o ECG
+        initializeEcgPoints();
+        animateEcg();
+    </script>
+</body>
+</html>
