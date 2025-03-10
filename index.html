@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/logo2.png">
     
     <title>Studio Geneseez</title>
     <style>
@@ -408,41 +409,40 @@
             }
         }
 
-        /* Estilos para as frases animadas (apenas em mobile) */
+        /* Estilos para as frases animadas (agora em desktop e mobile) */
         .text-container {
-            display: none; /* Escondido por padrão em desktop */
-            position: absolute; /* Alterado de fixed para absolute */
-            top: 50%;
+            display: flex; /* Sempre visível */
+            position: absolute;
+            top: calc(40% + 100px); /* Abaixo da house.png (top: 40% + max-height: 100px) */
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70%;
-            height: 60px; /* Altura média para as frases */
+            transform: translateX(-50%);
+            width: 50%; /* Maior que a house.png (30%) para boa legibilidade */
+            height: 60px;
             z-index: 8;
             pointer-events: none;
         }
         .fade-text {
-            font-size: 16px; /* Tamanho reduzido (era 20px) */
+            font-size: 24px; /* Tamanho para desktop */
             font-family: 'Impact', Arial, sans-serif;
             font-weight: bold;
             text-transform: uppercase;
             color: #333;
             text-align: center;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out; /* Transição mais rápida (era 0.5s) */
+            transition: opacity 0.3s ease-in-out;
             position: absolute;
             width: 100%;
         }
         .fade-text.active {
-            opacity: 1; /* Corrigido de 2 para 1 (opacidade máxima é 1) */
+            opacity: 1;
         }
         @media (max-width: 600px) {
             .text-container {
-                display: flex; /* Visível apenas em mobile */
-                justify-content: center;
-                align-items: center;
+                top: 50%; /* Centralizado no mobile */
+                width: 70%;
             }
             .fade-text {
-                font-size: 14px; /* Tamanho reduzido em mobile (era 18px) */
+                font-size: 14px; /* Tamanho para mobile */
             }
         }
     </style>
@@ -481,7 +481,6 @@
     <img src="images/house.png" alt="Imagem de cabeçalho" id="header-image" onload="console.log('Imagem carregada com sucesso')" onerror="console.log('Erro ao carregar a imagem')">
 
     <div id="section1" class="section">
-        <!-- Container das frases animadas movido para dentro da section1 -->
         <div class="text-container">
             <span class="fade-text">ONDE A CRIATIVIDADE ENCONTRA O TALENTO E A CULTURA GANHA VIDA.</span>
             <span class="fade-text">QUEBRAMOS BARREIRAS ENTRE ARTE, CULTURA E ESPORTE.</span>
@@ -573,15 +572,14 @@
                 if (scrollPos >= sectionHeight) {
                     headerImage.classList.add('header');
                     headerImage.classList.add('visible');
-                    textContainer.style.opacity = '0'; // Frases somem rapidamente na section2
+                    textContainer.style.opacity = '0';
                 } else {
                     headerImage.classList.remove('header');
                     headerImage.classList.remove('visible');
-                    textContainer.style.opacity = '1'; // Frases visíveis na section1
+                    textContainer.style.opacity = '1';
                 }
             }
 
-            // Controle das imagens de transição
             if (scrollPos >= 2 * sectionHeight) {
                 phrase1.classList.add('hidden');
             } else {
@@ -670,21 +668,19 @@
         initializeEcgPoints();
         animateEcg();
 
-        // Animação das frases (apenas em mobile)
-        if (window.innerWidth <= 600) {
-            const phrases = document.querySelectorAll('.fade-text');
-            let currentIndex = 0;
-            const fadeDuration = 3000; // 3 segundos por frase
+        // Animação das frases (desktop e mobile)
+        const phrases = document.querySelectorAll('.fade-text');
+        let currentIndex = 0;
+        const fadeDuration = 3000; // 3 segundos por frase
 
-            function showNextPhrase() {
-                phrases.forEach(phrase => phrase.classList.remove('active'));
-                phrases[currentIndex].classList.add('active');
-                currentIndex = (currentIndex + 1) % phrases.length;
-            }
-
-            showNextPhrase();
-            setInterval(showNextPhrase, fadeDuration);
+        function showNextPhrase() {
+            phrases.forEach(phrase => phrase.classList.remove('active'));
+            phrases[currentIndex].classList.add('active');
+            currentIndex = (currentIndex + 1) % phrases.length;
         }
+
+        showNextPhrase();
+        setInterval(showNextPhrase, fadeDuration);
 
         document.getElementById('contact-select').addEventListener('change', function() {
             let selectedValue = this.value;
