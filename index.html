@@ -6,7 +6,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
-    <!-- Importando a fonte Roboto usada no menu -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo2.png">
     <title>Studio Geneseez</title>
@@ -133,7 +132,7 @@
             padding: 10px;
             background: rgba(255, 255, 255, 0.1);
             color: #000000;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
@@ -277,12 +276,16 @@
             max-height: 100px;
             object-fit: cover;
             z-index: 5;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.5s ease, top 0.5s ease;
         }
         @media (max-width: 600px) {
             #header-image {
                 opacity: 1;
                 width: 250px;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                transition: opacity 0.5s ease, top 0.5s ease;
             }
             #header-image.header {
                 position: fixed;
@@ -292,7 +295,7 @@
                 width: 50%;
                 max-height: 100px;
                 opacity: 0;
-                transition: opacity 0.5s ease;
+                transition: opacity 0.5s ease, top 0.5s ease;
             }
             #header-image.header.visible {
                 opacity: 1;
@@ -313,7 +316,7 @@
             transform: translate(-50%, -50%);
             opacity: 0;
             visibility: hidden;
-            font-family: 'Poppins', sans-serif; /* Aplicando Poppins ao container */
+            font-family: 'Poppins', sans-serif;
         }
         .contact-container.visible {
             opacity: 1;
@@ -335,8 +338,8 @@
             background-color: #fff;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 10px;
-            font-family: 'Poppins', sans-serif; /* Fonte moderna */
-            font-weight: 400; /* Peso médio para legibilidade */
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
         }
         .contact-container button {
             padding: 8px 16px;
@@ -348,8 +351,8 @@
             cursor: pointer;
             margin: 5px;
             transition: background-color 0.3s ease;
-            font-family: 'Poppins', sans-serif; /* Fonte moderna */
-            font-weight: 600; /* Peso mais forte para botões */
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
         }
         .contact-container button:hover {
             background-color: #f0f0f0;
@@ -357,7 +360,7 @@
         .contact-container #fixed-contact {
             color: #fff;
             font-size: 16px;
-            font-family: 'Poppins', sans-serif; /* Fonte moderna */
+            font-family: 'Poppins', sans-serif;
             font-weight: 400;
         }
         .contact-container #fixed-contact p {
@@ -379,20 +382,17 @@
             transform: translate(-50%, -60%) scale(0.8);
         }
         @keyframes heartbeat {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.05);
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1);
-            }
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+            100% { transform: translate(-50%, -50%) scale(1); }
         }
         @media (max-width: 600px) {
             .pulsar {
                 width: 150px;
                 top: 25%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 6;
             }
         }
         #phrase1 {
@@ -538,7 +538,7 @@
     <script> 
         let isFormActive = false;
 
-        window.onscroll = function() {
+        function updatePositions() {
             let scrollPos = window.scrollY;
             let maxScroll = document.body.scrollHeight - window.innerHeight;
             let sectionHeight = window.innerHeight;
@@ -609,6 +609,11 @@
                 phrase2.classList.remove('hidden');
             }
         }
+
+        window.onscroll = updatePositions;
+        window.onload = function() {
+            updatePositions();
+        };
 
         const ecgCanvas = document.getElementById('ecgCanvas');
         const ctx = ecgCanvas.getContext('2d');
