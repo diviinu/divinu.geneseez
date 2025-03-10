@@ -407,9 +407,44 @@
                 width: 350px;
             }
         }
-        /* Nova imagem na borda inferior da section2 */
-        
-        
+
+        /* Estilos para as frases animadas (apenas em mobile) */
+        .text-container {
+            display: none; /* Escondido por padrão em desktop */
+            position: absolute; /* Alterado de fixed para absolute */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 60px; /* Altura média para as frases */
+            z-index: 8;
+            pointer-events: none;
+        }
+        .fade-text {
+            font-size: 16px; /* Tamanho reduzido (era 20px) */
+            font-family: 'Impact', Arial, sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #333;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out; /* Transição mais rápida (era 0.5s) */
+            position: absolute;
+            width: 100%;
+        }
+        .fade-text.active {
+            opacity: 1; /* Corrigido de 2 para 1 (opacidade máxima é 1) */
+        }
+        @media (max-width: 600px) {
+            .text-container {
+                display: flex; /* Visível apenas em mobile */
+                justify-content: center;
+                align-items: center;
+            }
+            .fade-text {
+                font-size: 14px; /* Tamanho reduzido em mobile (era 18px) */
+            }
+        }
     </style>
 </head>
 <body>
@@ -444,8 +479,20 @@
     <img src="images/logo1.png" alt="Logo Pulsante" class="pulsar">
     
     <img src="images/house.png" alt="Imagem de cabeçalho" id="header-image" onload="console.log('Imagem carregada com sucesso')" onerror="console.log('Erro ao carregar a imagem')">
-    
+
     <div id="section1" class="section">
+        <!-- Container das frases animadas movido para dentro da section1 -->
+        <div class="text-container">
+            <span class="fade-text">ONDE A CRIATIVIDADE ENCONTRA O TALENTO E A CULTURA GANHA VIDA.</span>
+            <span class="fade-text">QUEBRAMOS BARREIRAS ENTRE ARTE, CULTURA E ESPORTE.</span>
+            <span class="fade-text">ONDE A ARTE VIBRA, A CULTURA RESSONA E O ESPORTE INSPIRA.</span>
+            <span class="fade-text">A REVOLUÇÃO CRIATIVA COMEÇA AQUI.</span>
+            <span class="fade-text">EXPRESSÃO, INOVAÇÃO E PAIXÃO EM CADA DETALHE.</span>
+            <span class="fade-text">O PALCO DA SUA CRIATIVIDADE, A ARENA DO SEU TALENTO.</span>
+            <span class="fade-text">A ENERGIA DO ESPORTE, A ALMA DA ARTE, A FORÇA DA CULTURA.</span>
+            <span class="fade-text">MÚSICA, ARTE E ESPORTE: A TRILHA SONORA DE QUEM TRANSFORMA O MUNDO.</span>
+            <span class="fade-text">O SOM DA CRIATIVIDADE ECOA ATRAVÉS DA ARTE.</span>
+        </div>
         <div class="contact-container" id="initial-contact">
             <select id="contact-select">
                 <option value="" disabled selected>Escolha seu contato</option>
@@ -465,14 +512,13 @@
                 <p id="fixed-contact-detail"></p>
             </div>
         </div>
-        <img src="images/1FRASE.png" alt="Frase 1" id="phrase1">
+        <img src="images/1frase.png" alt="Frase 1" id="phrase1">
     </div>
     <div id="section2" class="section">
-        <img src="images/2FRASE.png" alt="Frase 2" id="phrase2">
+        <img src="images/2frase.png" alt="Frase 2" id="phrase2">
         Section 2
         <img src="images/DDG.png" alt="Imagem na Section 2" id="creation-image" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
         <img src="images/MURO.png" alt="Imagem Muro" id="muro-image" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
-       
     </div>
     
     <script> 
@@ -489,6 +535,7 @@
             let logoPulsar = document.querySelector('.pulsar');
             let phrase1 = document.getElementById('phrase1');
             let phrase2 = document.getElementById('phrase2');
+            let textContainer = document.querySelector('.text-container');
 
             if (scrollPos > 50) {
                 menu.classList.add('hidden');
@@ -526,9 +573,11 @@
                 if (scrollPos >= sectionHeight) {
                     headerImage.classList.add('header');
                     headerImage.classList.add('visible');
+                    textContainer.style.opacity = '0'; // Frases somem rapidamente na section2
                 } else {
                     headerImage.classList.remove('header');
                     headerImage.classList.remove('visible');
+                    textContainer.style.opacity = '1'; // Frases visíveis na section1
                 }
             }
 
@@ -620,6 +669,22 @@
 
         initializeEcgPoints();
         animateEcg();
+
+        // Animação das frases (apenas em mobile)
+        if (window.innerWidth <= 600) {
+            const phrases = document.querySelectorAll('.fade-text');
+            let currentIndex = 0;
+            const fadeDuration = 3000; // 3 segundos por frase
+
+            function showNextPhrase() {
+                phrases.forEach(phrase => phrase.classList.remove('active'));
+                phrases[currentIndex].classList.add('active');
+                currentIndex = (currentIndex + 1) % phrases.length;
+            }
+
+            showNextPhrase();
+            setInterval(showNextPhrase, fadeDuration);
+        }
 
         document.getElementById('contact-select').addEventListener('change', function() {
             let selectedValue = this.value;
