@@ -82,6 +82,104 @@
             opacity: 1;
             transform: translateX(0);
         }
+        #new-image1 {
+            position: fixed;
+            bottom: 50px;
+            left: 200px;
+            width: 80px;
+            max-height: 2000px;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateX(-100px);
+        }
+        #new-image1.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        #new-image2 {
+            position: fixed;
+            top: 100px;
+            right: 200px;
+            width: 150px;
+            max-height: 2000px;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateX(100px);
+        }
+        #new-image2.visible {
+            opacity: 1;
+            transform: translateX(0);
+            
+        }
+        #new-image3 {
+            position: fixed;
+            top: 300px;
+            right: 230px;
+            width: 200px;
+            max-height: 2000px;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateX(100px);
+        }
+        #new-image3.visible {
+            opacity: 1;
+            transform: translateX(0);
+            
+        }
+        #new-image4 {
+            position: fixed;
+            top: 180px;
+            left: 300px;
+            width: 150px;
+            max-height: 2000px;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateX(100px);
+        }
+        #new-image4.visible {
+            opacity: 1;
+            transform: translateX(0);
+            
+        }
+        #new-image5 {
+            position: fixed;
+          bottom: 100px;
+            right: 500px;
+            width: 100px;
+            max-height: 2000px;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateX(100px);
+        }
+        #new-image5.visible {
+            opacity: 1;
+            transform: translateX(0);
+            
+        }
+        #new-image6 {
+            position: fixed;
+            top: 80px;
+            left: 150px;
+            width:80px;
+            max-height: 2000px;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateX(100px);
+        }
+        #new-image6.visible {
+            opacity: 1;
+            transform: translateX(0);
+            
+        }
+      
+       
+            
         .oi-regular {
             font-family: "Oi", serif;
             font-weight: 400;
@@ -249,6 +347,36 @@
                 max-height: 2000px;
                 z-index: 10;
                 transition: opacity 0.5s ease, transform 0.5s ease;
+            }
+            #new-image1 {
+                bottom: 30px;
+                left: 270px;
+                width: 80px;
+            }
+            #new-image2 {
+                top: 280px;
+                right: 250px;
+                width: 150px;
+            }
+            #new-image3 {
+                top: 100px;
+                right: 200px;
+                width: 180px;
+            }
+            #new-image4 {
+                top: 600px;
+                left: 240px;
+                width: 100px;
+            }
+            #new-image5 {
+                top: 50px;
+                right: 100px;
+                width: 100px;
+            }
+            #new-image6 {
+                top: 780px;
+                left: 80px;
+                width: 65px;
             }
             .contact-container {
                 padding: 10px;
@@ -469,21 +597,21 @@
             <canvas id="ecgCanvas" width="300" height="50"></canvas>
         </div>
         <div id="menu-left">
-            <a href="index.html">Início</a>
-            <a href="catalogo.html">Catálogo</a>
-            <a href="contato.html">Contato</a>
-            <a href="quemsomos.html">Quem Somos</a>
+            <a href="/models/index.html">Início</a>
+            <a href="/models/catalogo.html">Catálogo</a>
+            <a href="/models/contato.html">Contato</a>
+            <a href="/models/quemsomos.html">Quem Somos</a>
         </div>
         <div id="menu-right">
-            <a href="sejamembro.html">Seja Membro</a>
+            <a href="/models/sejamembro.html">Seja Membro</a>
         </div>
     </nav>
     <div id="mobile-menu">
-        <a href="index.html">Início</a>
-        <a href="catalogo.html">Catálogo</a>
-        <a href="contato.html">Contato</a>
-        <a href="quemsomos.html">Quem Somos</a>
-        <a href="sejamembro.html">Seja Membro</a>
+        <a href="/models/index.html">Início</a>
+        <a href="/models/catalogo.html">Catálogo</a>
+        <a href="/models/contato.html">Contato</a>
+        <a href="/models/quemsomos.html">Quem Somos</a>
+        <a href="/models/sejamembro.html">Seja Membro</a>
     </div>
 
     <img src="images/CANTO.png" alt="Borda Canto Esquerdo Superior" id="canto-image">
@@ -533,6 +661,24 @@
         Section 2
         <img src="images/DDG.png" alt="Imagem na Section 2" id="creation-image" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
         <img src="images/MURO.png" alt="Imagem Muro" id="muro-image" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
+        <a href="https://open.spotify.com/intl-pt/" target="_blank">
+        <img src="images/nova-imagem1.png" alt="Nova Imagem 1" id="new-image1" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
+    </a>
+    <a href="https://www.instagram.com/geneseez/" target="_blank">
+        <img src="images/nova-imagem2.png" alt="Nova Imagem 2" id="new-image2" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
+    </a>
+    <a href="wa.me/5583991427149" target="_blank">
+        <img src="images/nova-imagem3.png" alt="Nova Imagem 3" id="new-image3" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
+    </a>
+    <a href="https://www.youtube.com/" target="_blank">
+        <img src="images/nova-imagem4.png" alt="Nova Imagem 4" id="new-image4" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61569243569140" target="_blank">
+        <img src="images/nova-imagem5.png" alt="Nova Imagem 5" id="new-image5" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
+    </a>
+    <a href="https://www.instagram.com/diivinu/" target="_blank">
+        <img src="images/nova-imagem6.png" alt="Nova Imagem 6" id="new-image6" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
+    </a>
     </div>
     
     <script> 
@@ -545,6 +691,12 @@
             let menu = document.getElementById('menu');
             let creationImage = document.getElementById('creation-image');
             let muroImage = document.getElementById('muro-image');
+            let newImage1 = document.getElementById('new-image1');
+            let newImage2 = document.getElementById('new-image2');
+            let newImage3 = document.getElementById('new-image3');
+            let newImage4 = document.getElementById('new-image4');
+            let newImage5 = document.getElementById('new-image5');
+            let newImage6 = document.getElementById('new-image6');
             let headerImage = document.getElementById('header-image');
             let initialContact = document.getElementById('initial-contact');
             let detailsContact = document.getElementById('details-contact');
@@ -578,11 +730,35 @@
                 creationImage.classList.add('visible');
                 muroImage.classList.remove('hidden');
                 muroImage.classList.add('visible');
+                newImage1.classList.remove('hidden');
+                newImage1.classList.add('visible');
+                newImage2.classList.remove('hidden');
+                newImage2.classList.add('visible');
+                newImage3.classList.remove('hidden');
+                newImage3.classList.add('visible');
+                newImage4.classList.remove('hidden');
+                newImage4.classList.add('visible');
+                newImage5.classList.remove('hidden');
+                newImage5.classList.add('visible');
+                newImage6.classList.remove('hidden');
+                newImage6.classList.add('visible');
             } else {
                 creationImage.classList.remove('visible');
                 creationImage.classList.add('hidden');
                 muroImage.classList.remove('visible');
                 muroImage.classList.add('hidden');
+                newImage1.classList.remove('visible');
+                newImage1.classList.add('hidden');
+                newImage2.classList.remove('visible');
+                newImage2.classList.add('hidden');
+                newImage3.classList.remove('visible');
+                newImage3.classList.add('hidden');
+                newImage4.classList.remove('visible');
+                newImage4.classList.add('hidden');
+                newImage5.classList.remove('visible');
+                newImage5.classList.add('hidden');
+                newImage6.classList.remove('visible');
+                newImage6.classList.add('hidden');
             }
 
             if (window.innerWidth <= 600) {
