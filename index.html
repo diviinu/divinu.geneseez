@@ -1,228 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!-- This site was created in Webflow. https://webflow.com --><!-- Last Published: Thu Dec 19 2024 12:10:53 GMT+0000 (Coordinated Universal Time) -->
+<html
+  data-wf-domain="www.gentlerain.ai"
+  data-wf-page="672a4022c04412b253b0ae87"
+  data-wf-site="672a4022c04412b253b0ae88"
+  lang="en"
+  data-wf-locale="en"
+>
+  <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Importando a fonte Roboto usada no menu -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/logo2.png">
-    <title>Studio Geneseez</title>
+    <title>GENESEEZ</title>
+    <meta
+      content="Gentlerain is a training solution that leverages generative AI to create immersive realistic role play scenarios that help users in the corporate world growing skills in fields such as leadership, marketing or project management."
+      name="description"
+    />
+    <meta content="Gentlerain" property="og:title" />
+    <meta
+      content="Gentlerain is a training solution that leverages generative AI to create immersive realistic role play scenarios that help users in the corporate world growing skills in fields such as leadership, marketing or project management."
+      property="og:description"
+    />
+    <meta
+      content="https://cdn.prod.website-files.com/6607f4c9af7f72c2d521e1bd/666c768f3df5a52991d3e9cf_OG%20IMAGE.jpg"
+      property="og:image"
+    />
+    <meta content="Gentlerain" property="twitter:title" />
+    <meta
+      content="Gentlerain is a training solution that leverages generative AI to create immersive realistic role play scenarios that help users in the corporate world growing skills in fields such as leadership, marketing or project management."
+      property="twitter:description"
+    />
+    <meta
+      content="https://cdn.prod.website-files.com/6607f4c9af7f72c2d521e1bd/666c768f3df5a52991d3e9cf_OG%20IMAGE.jpg"
+      property="twitter:image"
+    />
+    <meta property="og:type" content="website" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Webflow" name="generator" />
+    <link
+      href="https://cdn.prod.website-files.com/672a4022c04412b253b0ae88/css/gentelrain.webflow.1f2e30038.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <style>
-        #canto-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: auto;
-            max-width: 200px;
-            z-index: 5;
-            pointer-events: none;
-        }
-        #canto-image2 {
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: 100vh;
-            width: auto;
-            max-width: 200px;
-            z-index: 5;
-            pointer-events: none;
-        }
-        #canto-image3 {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            height: 50vh;
-            width: auto;
-            max-width: 200px;
-            z-index: 5;
-            pointer-events: none;
-        }
-        #canto-image4 {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            height: 50vh;
-            width: auto;
-            max-width: 200px;
-            z-index: 5;
-            pointer-events: none;
-        }
-        #creation-image {
-            position: fixed;
-            bottom: 20px;
-            right: 600px;
-            width: 250px;
-            max-height: 2000px;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: translateX(100px);
-        }
-        #creation-image.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        #muro-image {
-            position: fixed;
-            top: 20px;
-            left: 500px;
-            width: 300px;
-            max-height: 2000px;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: translateX(100px);
-        }
-        #muro-image.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        #new-image1 {
-            position: fixed;
-            bottom: 50px;
-            left: 200px;
-            width: 80px;
-            max-height: 2000px;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: translateX(-100px);
-        }
-        #new-image1.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        #new-image2 {
-            position: fixed;
-            top: 100px;
-            right: 200px;
-            width: 150px;
-            max-height: 2000px;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: translateX(100px);
-        }
-        #new-image2.visible {
-            opacity: 1;
-            transform: translateX(0);
-            
-        }
-        #new-image3 {
-            position: fixed;
-            top: 300px;
-            right: 230px;
-            width: 200px;
-            max-height: 2000px;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: translateX(100px);
-        }
-        #new-image3.visible {
-            opacity: 1;
-            transform: translateX(0);
-            
-        }
-        #new-image4 {
-            position: fixed;
-            top: 180px;
-            left: 300px;
-            width: 150px;
-            max-height: 2000px;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: translateX(100px);
-        }
-        #new-image4.visible {
-            opacity: 1;
-            transform: translateX(0);
-            
-        }
-        #new-image5 {
-            position: fixed;
-          bottom: 100px;
-            right: 500px;
-            width: 100px;
-            max-height: 2000px;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: translateX(100px);
-        }
-        #new-image5.visible {
-            opacity: 1;
-            transform: translateX(0);
-            
-        }
-        #new-image6 {
-            position: fixed;
-            top: 80px;
-            left: 150px;
-            width:80px;
-            max-height: 2000px;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: translateX(100px);
-        }
-        #new-image6.visible {
-            opacity: 1;
-            transform: translateX(0);
-            
-        }
-      
-       
-            
-        .oi-regular {
-            font-family: "Oi", serif;
-            font-weight: 400;
-            font-style: normal;
-        }
-        body {
-            margin: 0;
-            background-color: #ffffff;
-            overflow-x: hidden;
-        }
-        #controls {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            color: white;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            max-width: 90%;
-            box-sizing: border-box;
-            z-index: 10;
-        }
-        .section {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2em;
-            color: #ffffff;
-            position: relative;
-        }
-        #section1 { background-color: #ffffff; }
-        #section2 { background-color: #ffffff; }
-        @media (max-width: 600px) {
-            #controls {
-                font-size: 12px;
-                padding: 5px;
-                top: 5px;
-                left: 5px;
-            }
-        }
-        #menu {
+       #menu {
             position: fixed;
             top: 0;
             left: 0;
@@ -230,7 +57,7 @@
             padding: 10px;
             background: rgba(255, 255, 255, 0.1);
             color: #000000;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
@@ -308,6 +135,8 @@
         #mobile-menu a:hover {
             color: #555555;
         }
+
+        /* Estilos para Mobile (max-width: 600px) */
         @media (max-width: 600px) {
             #menu {
                 padding: 10px;
@@ -326,471 +155,584 @@
                 height: 30px;
                 left: 50%;
             }
-            #canto-image, #canto-image2 {
-                height: 50vh;
-                max-width: 200px;
-            }
-            #canto-image3, #canto-image4 {
-                display: block;
-            }
-            #muro-image {
-                width: 300px;
-                top: 120px;
-                left: 20%;
-                transform: translateX(-50%);
-            }
-            #creation-image {
-                position: fixed;
-                bottom: 120px;
-                right: 140px;
-                width: 250px;
-                max-height: 2000px;
-                z-index: 10;
-                transition: opacity 0.5s ease, transform 0.5s ease;
-            }
-            #new-image1 {
-                bottom: 30px;
-                left: 270px;
-                width: 80px;
-            }
-            #new-image2 {
-                top: 250px;
-                right: 250px;
-                width: 150px;
-            }
-            #new-image3 {
-                top: 100px;
-                right: 200px;
-                width: 180px;
-            }
-            #new-image4 {
-                top: 500px;
-                left: 240px;
-                width: 100px;
-            }
-            #new-image5 {
-                top: 50px;
-                right: 100px;
-                width: 100px;
-            }
-            #new-image6 {
-                top: 680px;
-                left: 80px;
-                width: 65px;
-            }
-            .contact-container {
-                padding: 10px;
-                max-width: 80%;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) !important;
-            }
-            .contact-container select,
-            .contact-container input {
-                font-size: 14px;
-                padding: 6px;
-            }
-            .contact-container button {
-                font-size: 14px;
-                padding: 6px 12px;
-            }
         }
-        #header-image {
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 30%;
-            max-height: 100px;
-            object-fit: cover;
-            z-index: 5;
-            transition: opacity 0.5s ease, top 0.5s ease;
+      @media (min-width: 992px) {
+        html.w-mod-js:not(.w-mod-ix)
+          [data-w-id="3e5d068f-6985-f1f6-a04e-d3f6ae72ad0f"] {
+          width: 100%;
         }
-        @media (max-width: 600px) {
-            #header-image {
-                opacity: 1;
-                width: 250px;
-                top: 40%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                transition: opacity 0.5s ease, top 0.5s ease;
-            }
-            #header-image.header {
-                position: fixed;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 50%;
-                max-height: 100px;
-                opacity: 0;
-                transition: opacity 0.5s ease, top 0.5s ease;
-            }
-            #header-image.header.visible {
-                opacity: 1;
-            }
+      
+        html.w-mod-js:not(.w-mod-ix)
+          [data-w-id="86a945bb-1955-4d38-eb5c-8c1c5a551974"] {
+          width: 100%;
+          height: 0%;
         }
-        .contact-container {
-            background: rgba(219, 219, 219, 0.5);
-            padding: 15px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 300px;
-            text-align: center;
-            z-index: 15;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            visibility: hidden;
-            font-family: 'Poppins', sans-serif;
+        html.w-mod-js:not(.w-mod-ix)
+          [data-w-id="86a945bb-1955-4d38-eb5c-8c1c5a55197b"] {
+          width: 100%;
+          height: 0%;
         }
-        .contact-container.visible {
-            opacity: 1;
-            visibility: visible;
+      }
+      
+        
+        html.w-mod-js:not(.w-mod-ix)
+          [data-w-id="a90c2296-65ec-3bf8-01a1-f59c708a4580"] {
+          display: none;
         }
-        .contact-container.hidden {
-            opacity: 0;
-            visibility: hidden;
+        html.w-mod-js:not(.w-mod-ix)
+          [data-w-id="ed04b8a2-0662-ac7c-16d8-dc152644c1c9"] {
+          display: none;
         }
-        .contact-container select,
-        .contact-container input {
-            display: block;
-            width: 100%;
-            padding: 8px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            box-sizing: border-box;
-            background-color: #fff;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 400;
+      
+     
+        html.w-mod-js:not(.w-mod-ix)
+          [data-w-id="a90c2296-65ec-3bf8-01a1-f59c708a4581"] {
+          width: 100%;
+          height: 0%;
         }
-        .contact-container button {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 10px;
-            background-color: #ffffff;
-            color: #000000;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 5px;
-            transition: background-color 0.3s ease;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
+       
+        html.w-mod-js:not(.w-mod-ix)
+          [data-w-id="a90c2296-65ec-3bf8-01a1-f59c708a4580"] {
+          display: none;
         }
-        .contact-container button:hover {
-            background-color: #f0f0f0;
+        html.w-mod-js:not(.w-mod-ix)
+          [data-w-id="ed04b8a2-0662-ac7c-16d8-dc152644c1c9"] {
+          display: none;
         }
-        .contact-container #fixed-contact {
-            color: #fff;
-            font-size: 16px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 400;
-        }
-        .contact-container #fixed-contact p {
-            margin: 5px 0;
-        }
-        .pulsar {
-            position: absolute;
-            top: 25%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 120px;
-            height: auto;
-            z-index: 6;
-            animation: heartbeat 1.5s infinite ease-in-out;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .pulsar.hidden {
-            opacity: 0;
-            transform: translate(-50%, -60%) scale(0.8);
-        }
-        @keyframes heartbeat {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.05); }
-            100% { transform: translate(-50%, -50%) scale(1); }
-        }
-        @media (max-width: 600px) {
-            .pulsar {
-                width: 150px;
-                top: 25%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: 6;
-            }
-        }
-        #phrase1 {
-            position: absolute;
-            bottom: 0px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 350px;
-            height: auto;
-            z-index: 7;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-        #phrase2 {
-            position: absolute;
-            top: 0px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 350px;
-            height: auto;
-            z-index: 7;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-        #phrase1.hidden, #phrase2.hidden {
-            opacity: 0;
-        }
-        @media (max-width: 600px) {
-            #phrase1, #phrase2 {
-                width: 350px;
-            }
-        }
-        .text-container {
-            display: flex;
-            position: absolute;
-            top: calc(30% + 100px);
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 60px;
-            z-index: 8;
-            pointer-events: none;
-        }
-        .fade-text {
-            font-size: 18px;
-            font-family: 'Impact', Arial, sans-serif;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #333;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            position: absolute;
-            width: 100%;
-        }
-        .fade-text.active {
-            opacity: 1;
-        }
-        @media (max-width: 600px) {
-            .text-container {
-                top: 50%;
-                width: 70%;
-            }
-            .fade-text {
-                font-size: 14px;
-            }
-        }
+      
     </style>
-</head>
-<body>
+    <script type="text/javascript">
+      !(function (o, c) {
+        var n = c.documentElement,
+          t = " w-mod-";
+        (n.className += t + "js"),
+          ("ontouchstart" in o ||
+            (o.DocumentTouch && c instanceof DocumentTouch)) &&
+            (n.className += t + "touch");
+      })(window, document);
+    </script>
+    <link
+      href="https://cdn.prod.website-files.com/6607f4c9af7f72c2d521e1bd/666c76675e5359d064676030_fav_32x32.png"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.prod.website-files.com/6607f4c9af7f72c2d521e1bd/666c766bcd34822392fe3ffd_fav_256x256.png"
+      rel="apple-touch-icon"
+    />
+    <!-- [Attributes by Finsweet] Auto Video -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-autovideo@1/autovideo.js"
+    ></script>
+    <!-- [Attributes by Finsweet] Disable scrolling -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-scrolldisable@1/scrolldisable.js"
+    ></script>
+
+    <script>
+      const startWidth = window.innerWidth;
+
+      window.addEventListener("resize", function () {
+        if (window.innerWidth !== startWidth) {
+          location.reload();
+        }
+      });
+    </script>
+
+    <style>
+      [text-split] {
+        opacity: 0;
+      }
+      html.w-editor [text-split] {
+        opacity: 1;
+      }
+
+      html.lenis {
+        height: auto;
+      }
+      .lenis.lenis-smooth {
+        scroll-behavior: auto;
+      }
+      .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+      }
+      .lenis.lenis-stopped {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body data-w-id="66324bdcff44d1bf713bc6a0" class="body">
     <nav id="menu">
-        <button id="hamburger">☰</button>
-        <div id="ecg-container">
-            <canvas id="ecgCanvas" width="300" height="50"></canvas>
-        </div>
-        <div id="menu-left">
-            <a href="index.html">Início</a>
-            <a href="catalogo.html">Catálogo</a>
-            <a href="contato.html">Contato</a>
-            <a href="quemsomos.html">Quem Somos</a>
-        </div>
-        <div id="menu-right">
-            <a href="sejamembro.html">Seja Membro</a>
-        </div>
-    </nav>
-    <div id="mobile-menu">
-        <a href="index.html">Início</a>
-        <a href="catalogo.html">Catálogo</a>
-        <a href="contato.html">Contato</a>
-        <a href="quemsomos.html">Quem Somos</a>
-        <a href="sejamembro.html">Seja Membro</a>
-    </div>
+      <button id="hamburger">☰</button>
+      <div id="ecg-container">
+          <canvas id="ecgCanvas" width="300" height="50"></canvas>
+      </div>
+      <div id="menu-left">
+          <a href="index.html">Início</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="contato.html">Contato</a>
+          <a href="quemsomos.html">Quem Somos</a>
+      </div>
+      <div id="menu-right">
+          <a href="sejamembro.html">Seja Membro</a>
+      </div>
+  </nav>
+  <div id="mobile-menu">
+      <a href="index.html">Início</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="contato.html">Contato</a>
+      <a href="quemsomos.html">Quem Somos</a>
+      <a href="sejamembro.html">Seja Membro</a>
+  </div>
+    <div class="style-global w-embed">
+      <style>
+        html {
+          font-size: -webkit-calc(10000vw / 1440);
+          font-size: -moz-calc(10000vw / 1440);
+          font-size: calc(10000vw / 1440);
+          font-size: 6.9444vw;
+        }
+        a {
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
 
-    <img src="images/CANTO.png" alt="Borda Canto Esquerdo Superior" id="canto-image">
-    <img src="images/CANTO2.png" alt="Borda Canto Direito Superior" id="canto-image2">
-    <img src="images/CANTO3.png" alt="Borda Canto Direito Inferior" id="canto-image3">
-    <img src="images/CANTO4.png" alt="Borda Canto Esquerdo Inferior" id="canto-image4">
-    
-    <img src="images/logo1.png" alt="Logo Pulsante" class="pulsar">
-    
-    <img src="images/house.png" alt="Imagem de cabeçalho" id="header-image" onload="console.log('Imagem carregada com sucesso')" onerror="console.log('Erro ao carregar a imagem')">
+        .body {
+          overscroll-behavior: none;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -webkit-font-smoothing: antialiased;
+        }
 
-    <div id="section1" class="section">
-        <div class="text-container">
-            <span class="fade-text">ONDE A CRIATIVIDADE ENCONTRA O TALENTO E A CULTURA GANHA VIDA.</span>
-            <span class="fade-text">QUEBRAMOS BARREIRAS ENTRE ARTE, CULTURA E ESPORTE.</span>
-            <span class="fade-text">ONDE A ARTE VIBRA, A CULTURA RESSONA E O ESPORTE INSPIRA.</span>
-            <span class="fade-text">A REVOLUÇÃO CRIATIVA COMEÇA AQUI.</span>
-            <span class="fade-text">EXPRESSÃO, INOVAÇÃO E PAIXÃO EM CADA DETALHE.</span>
-            <span class="fade-text">O PALCO DA SUA CRIATIVIDADE, A ARENA DO SEU TALENTO.</span>
-            <span class="fade-text">A ENERGIA DO ESPORTE, A ALMA DA ARTE, A FORÇA DA CULTURA.</span>
-            <span class="fade-text">MÚSICA, ARTE E ESPORTE: A TRILHA SONORA DE QUEM TRANSFORMA O MUNDO.</span>
-            <span class="fade-text">O SOM DA CRIATIVIDADE ECOA ATRAVÉS DA ARTE.</span>
+        #navbarCta:hover {
+          color: #fd7024 !important;
+        }
+
+        .lottie-box,
+        .lottie-circles_musk,
+        .footer-lottie_wrap {
+          -webkit-mask-image: -webkit-radial-gradient(white, black);
+        }
+
+        @keyframes scroll2 {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(calc(-100% - 0.24rem));
+          }
+        }
+
+        .scroll-2 {
+          animation: scroll2 30s linear infinite;
+        }
+
+        @media (max-width: 991px) {
+          html {
+            font-size: -webkit-calc(10000vw / 768);
+            font-size: -moz-calc(10000vw / 768);
+            font-size: calc(10000vw / 768);
+            font-size: 13.0208333vw;
+          }
+        }
+
+        @media (max-width: 479px) {
+          html {
+            font-size: -webkit-calc(10000vw / 375);
+            font-size: -moz-calc(10000vw / 375);
+            font-size: calc(10000vw / 375);
+            font-size: 26.6666vw;
+          }
+          .w-nav-overlay {
+            top: 0;
+          }
+          .menu-btn_close {
+            display: none;
+          }
+          .w-nav-button.w--open .menu-btn_open {
+            display: none;
+            transition: all linear 0.3s;
+          }
+          .w-nav-button.w--open .menu-btn_close {
+            display: block;
+            transition: all linear 0.3s;
+          }
+        }
+      </style>
+    
+       
+                  <div
+                    data-w-id="86a945bb-1955-4d38-eb5c-8c1c5a551974"
+                    class="button-secondary_bg"
+                  ></div>
+          <div class="webgl-canvas_container">
+            <img
+              src="https://cdn.prod.website-files.com/672a4022c04412b253b0ae88/672a4022c04412b253b0aef6_gradient%202%402x.png"
+              loading="eager"
+              alt=""
+              class="canvas-g"
+            />
+          </div>
         </div>
-        <div class="contact-container" id="initial-contact">
-            <select id="contact-select">
-                <option value="" disabled selected>Deixe seu contato</option>
-                <option value="celular">Celular</option>
-                <option value="email">E-mail</option>
-                <option value="whatsapp">WhatsApp</option>
-                <option value="instagram">Instagram</option>
-            </select>
-        </div>
-        <div class="contact-container hidden" id="details-contact">
-            <input type="text" id="name-input" placeholder="Digite seu nome">
-            <input type="text" id="contact-detail-input" placeholder="Digite seu contato">
-            <button id="save-btn">Salvar</button>
-            <button id="back-btn">Voltar</button>
-            <div id="fixed-contact" class="hidden">
-                <p id="fixed-name"></p>
-                <p id="fixed-contact-detail"></p>
+        <div class="loader-spacer"></div>
+      </div>
+      
+      
+      <section
+        data-w-id="6e08701f-ade0-7556-284e-81f3cfb10620"
+        class="anim-section"
+      >
+        <div class="visual-pin-wrapper">
+          <div class="human-block-wrapper">
+            <div class="human-block">
+              <div class="human-block__pin-cont">
+                <div class="human-block__title"></div>
+                <div class="video-block w-embed">
+                  <video
+                    id="human-video-js"
+                    class="human-video-js"
+                    width="100%"
+                    height="100%"
+                    preload="auto"
+                    playsinline
+                    muted
+                  >
+                    <source
+                      media="(max-width: 479px)"
+                      src="https://zajno-storage0.s3.us-west-1.amazonaws.com/dev/Gentel+rain/Stable+version/Gen-3+Alpha+Turbo+MOBILE+x2.mp4"
+                      type="video/mp4"
+                    />
+                    <source
+                      media="(max-width: 991px)"
+                      src="https://zajno-storage0.s3.us-west-1.amazonaws.com/dev/Gentel+rain/Stable+version/Gen-3+Alpha+Turbo+TABLET.mp4"
+                      type="video/mp4"
+                    />
+                    <source
+                      media="(min-width: 992px)"
+                      src="https://zajno-storage0.s3.us-west-1.amazonaws.com/dev/Gentel+rain/awards/man-model.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+
+                  <style>
+                    .human-video-js {
+                      object-fit: cover;
+                    }
+                  </style>
+                </div>
+                <div class="human-block__small-titles">
+                  <div class="human-block__small-titles-cont">
+                    <div class="human-block__small-title">Descubra um universo</div>
+                    <div class="human-block__small-title">
+                      de arte e criatividade
+                    </div>
+                    <div class="human-block__small-title">
+                      com a GENESEEZ
+                    </div>
+                    <div class="human-block__small-title">
+                      mergulhe em nossa paixão e
+                    </div>
+                    <div class="human-block__small-title">
+                      conheça o que nos inspira!
+                    </div>
+                  </div>
+                </div>
+                <div class="w-dyn-list">
+                  <div role="list" class="w-dyn-items">
+                    <div role="listitem" class="human-block__cta w-dyn-item">
+                      <div class="cta-title">
+                        <div class="cta-title__text">
+                          <h2 class="h_fs-3">GENESEEZ</h2>
+                        </div>
+                      </div>
+                      <div class="cta-desc">
+                        <div class="cta-desc__text">
+                          <p class="p-fs-5">
+                            Onde a Criatividade Encontra o Talento e a Cultura Ganha Vida.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="cta-btn">
+                        <div class="cta-btn__text">
+                          <a
+                            href="https://gentlerain.forms.app/sign-up"
+                            target="_blank"
+                            class="button-premium_lg w-button"
+                            >Try now</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        <img src="images/1FRASE.png" alt="Frase 1" id="phrase1">
-    </div>
-    <div id="section2" class="section">
-        <img src="images/2FRASE.png" alt="Frase 2" id="phrase2">
-        Section 2
-        <img src="images/DDG.png" alt="Imagem na Section 2" id="creation-image" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
-        <img src="images/MURO.png" alt="Imagem Muro" id="muro-image" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
-        <a href="https://open.spotify.com/intl-pt/" target="_blank">
-        <img src="images/nova-imagem1.png" alt="Nova Imagem 1" id="new-image1" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
-    </a>
-    <a href="https://www.instagram.com/geneseez/" target="_blank">
-        <img src="images/nova-imagem2.png" alt="Nova Imagem 2" id="new-image2" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
-    </a>
-    <a href="wa.me/5583991427149" target="_blank">
-        <img src="images/nova-imagem3.png" alt="Nova Imagem 3" id="new-image3" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
-    </a>
-    <a href="https://www.youtube.com/" target="_blank">
-        <img src="images/nova-imagem4.png" alt="Nova Imagem 4" id="new-image4" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=61569243569140" target="_blank">
-        <img src="images/nova-imagem5.png" alt="Nova Imagem 5" id="new-image5" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
-    </a>
-    <a href="https://www.instagram.com/diivinu/" target="_blank">
-        <img src="images/nova-imagem6.png" alt="Nova Imagem 6" id="new-image6" onload="console.log('Imagem carregada!')" onerror="console.log('Erro ao carregar imagem')">
-    </a>
-    </div>
-    
-    <script> 
-        let isFormActive = false;
+        <div id="conceptLink" class="offset-nav"></div>
+      </section>
+      <section data-w-id="7578926d-04bc-3372-f471-912f09b2a872" class="track">
+        <div class="track_camera">
+          <div class="track_frame">
+            <div class="track_item">
+              <div class="div-block-15">
+               
+                <div class="div-block-8">
+                  <div class="h-fs-4">A arte começa em </div>
+                  <div class="h-fs-large">GENESEEZ</div>
+                </div>
+              </div>
+              <div class="cards-wrap">
+                <div class="w-dyn-list">
+                  <div role="list" class="w-dyn-items">
+                    <div role="listitem" class="card-1 w-dyn-item">
+                      <div class="card-content">
+                        <div class="card-1_video w-embed">
+                          <video
+                            class="track-cards--vid"
+                            width="100%"
+                            height="100%"
+                            preload="auto"
+                            autoplay
+                            loop
+                            playsinline
+                            muted
+                          >
+                            <source
+                              src="https://zajno-storage0.s3.us-west-1.amazonaws.com/dev/Gentel+rain/awards+files/672a4022c04412b253b0af51_1.mov"
+                              type="video/mp4"
+                            />
+                          </video>
 
-        function updatePositions() {
+                          <style>
+                            .track-cards--vid {
+                              object-fit: cover;
+                            }
+                          </style>
+                        </div>
+                        <img
+                          src="https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0af21_card-1_clear%402x.png"
+                          loading="lazy"
+                          alt=""
+                          class="card-img"
+                        />
+                      </div>
+                      <div class="card-1_text">
+                        <div class="card_title-brown">Personalized</div>
+                        <div class="card_desc-brown">
+                          Curate skills &amp; build custom role-plays in our AI
+                          studio
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-dyn-list">
+                  <div role="list" class="w-dyn-items">
+                    <div role="listitem" class="card-2 w-dyn-item">
+                      <div class="card-2_img-wrap">
+                        <div class="card-2_video w-embed">
+                          <video
+                            class="track-cards--vid"
+                            width="100%"
+                            height="100%"
+                            preload="auto"
+                            autoplay
+                            loop
+                            playsinline
+                            muted
+                          >
+                            <source
+                              src="https://zajno-storage0.s3.us-west-1.amazonaws.com/dev/Gentel+rain/awards+files/672a4022c04412b253b0af50_2.mov"
+                              type="video/mp4"
+                            />
+                          </video>
+                        </div>
+                        <img
+                          src="https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0af4d_card-2_front-clear%402x.png"
+                          loading="lazy"
+                          alt=""
+                          sizes="(max-width: 479px) 74vw, (max-width: 991px) 62vw, 33vw"
+                          srcset="
+                            https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0af4d_card-2_front-clear%25402x-p-500.png 500w,
+                            https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0af4d_card-2_front-clear%402x.png         962w
+                          "
+                          class="card-2_img-font"
+                        />
+                      </div>
+                      <img
+                        src="https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0af22_card-2_back%402x.png"
+                        loading="lazy"
+                        alt=""
+                        sizes="(max-width: 479px) 91vw, (max-width: 991px) 76vw, 40vw"
+                        srcset="
+                          https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0af22_card-2_back%25402x-p-500.png 500w,
+                          https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0af22_card-2_back%402x.png         956w
+                        "
+                        class="card-2_img-back"
+                      />
+                      <div class="card-2_text">
+                        <div class="card_title-orange">Private</div>
+                        <div class="card_desc-orange">For your users only</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-dyn-list">
+                  <div role="list" class="w-dyn-items">
+                    <div role="listitem" class="card-3 w-dyn-item">
+                      <div class="card-3_img-wrap">
+                        <div class="card-3_video w-embed">
+                          <video
+                            class="track-cards--vid"
+                            width="100%"
+                            height="100%"
+                            preload="auto"
+                            autoplay
+                            loop
+                            playsinline
+                            muted
+                          >
+                            <source
+                              src="https://zajno-storage0.s3.us-west-1.amazonaws.com/dev/Gentel+rain/awards+files/672a4022c04412b253b0af52_3.mov"
+                              type="video/mp4"
+                            />
+                          </video>
+                        </div>
+                        <img
+                          src="https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0aed3_card-4_front-clear%402x.png"
+                          loading="lazy"
+                          alt=""
+                          class="card-3_img"
+                        />
+                      </div>
+                      <div class="card-3_text">
+                        <div class="card_title-brown">Branded</div>
+                        <div class="card_desc-brown">
+                          Fully personalized to your brand
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-dyn-list">
+                  <div role="list" class="w-dyn-items">
+                    <div role="listitem" class="card-4 w-dyn-item">
+                      <div class="card-4_img-front_wrap-1">
+                        <img
+                          src="https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0aed3_card-4_front-clear%402x.png"
+                          loading="lazy"
+                          alt=""
+                          class="card-4_img-front"
+                        />
+                        <div class="card-4_video w-embed">
+                          <video
+                            class="track-cards--vid"
+                            width="100%"
+                            height="100%"
+                            preload="auto"
+                            autoplay
+                            loop
+                            playsinline
+                            muted
+                          >
+                            <source
+                              src="https://zajno-storage0.s3.us-west-1.amazonaws.com/dev/Gentel+rain/awards+files/672a4022c04412b253b0af53_4.mov"
+                              type="video/mp4"
+                            />
+                          </video>
+                        </div>
+                      </div>
+                      <div class="card-4_img-front_wrap-2">
+                        <img
+                          src="https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0af02_card-4_back-2%402x.png"
+                          loading="lazy"
+                          alt=""
+                          class="card-4_img-front"
+                        />
+                      </div>
+                      <div class="card-4_text">
+                        <div class="card_title-orange">Integrated</div>
+                        <div class="card_desc-orange">
+                          Send skills data to your LMS and HCM systems
+                        </div>
+                      </div>
+                      <div class="card-note-2">
+                        <img
+                          src="https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0af61_card-4_back%402x.png"
+                          loading="lazy"
+                          alt=""
+                          sizes="(max-width: 479px) 100vw, (max-width: 991px) 81vw, 43vw"
+                          srcset="
+                            https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0af61_card-4_back%25402x-p-500.png  500w,
+                            https://cdn.prod.website-files.com/672a4022c04412b253b0aead/672a4022c04412b253b0af61_card-4_back%402x.png         1218w
+                          "
+                          class="card-img"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-note-1">
+                  <img
+                    src="https://cdn.prod.website-files.com/672a4022c04412b253b0ae88/672a4022c04412b253b0af3d_note-1%402x.avif"
+                    loading="lazy"
+                    alt=""
+                    class="card-img"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="businessLink" class="offset-nav"></div>
+      </section>
+      
+      
+          <div id="sceneFooter" class="webgl-scene"></div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=672a4022c04412b253b0ae88"
+      type="text/javascript"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.prod.website-files.com/672a4022c04412b253b0ae88/js/webflow.85d7550da2a413afaae71b2ac67b057a.js"
+      type="text/javascript"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js"></script>
+
+    <script>
+      // Evento para abrir/fechar o menu mobile
+      document.getElementById('hamburger').addEventListener('click', function() {
+            let mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Lógica para esconder o menu ao rolar
+        window.onscroll = function() {
             let scrollPos = window.scrollY;
-            let maxScroll = document.body.scrollHeight - window.innerHeight;
-            let sectionHeight = window.innerHeight;
             let menu = document.getElementById('menu');
-            let creationImage = document.getElementById('creation-image');
-            let muroImage = document.getElementById('muro-image');
-            let newImage1 = document.getElementById('new-image1');
-            let newImage2 = document.getElementById('new-image2');
-            let newImage3 = document.getElementById('new-image3');
-            let newImage4 = document.getElementById('new-image4');
-            let newImage5 = document.getElementById('new-image5');
-            let newImage6 = document.getElementById('new-image6');
-            let headerImage = document.getElementById('header-image');
-            let initialContact = document.getElementById('initial-contact');
-            let detailsContact = document.getElementById('details-contact');
-            let logoPulsar = document.querySelector('.pulsar');
-            let phrase1 = document.getElementById('phrase1');
-            let phrase2 = document.getElementById('phrase2');
-            let textContainer = document.querySelector('.text-container');
-
             if (scrollPos > 50) {
                 menu.classList.add('hidden');
             } else {
                 menu.classList.remove('hidden');
             }
-
-            if (scrollPos >= sectionHeight) {
-                logoPulsar.classList.add('hidden');
-            } else {
-                logoPulsar.classList.remove('hidden');
-            }
-
-            if (!isFormActive) {
-                if (scrollPos >= sectionHeight) {
-                    initialContact.classList.add('visible');
-                } else {
-                    initialContact.classList.remove('visible');
-                }
-            }
-
-            if (scrollPos >= sectionHeight) {
-                creationImage.classList.remove('hidden');
-                creationImage.classList.add('visible');
-                muroImage.classList.remove('hidden');
-                muroImage.classList.add('visible');
-                newImage1.classList.remove('hidden');
-                newImage1.classList.add('visible');
-                newImage2.classList.remove('hidden');
-                newImage2.classList.add('visible');
-                newImage3.classList.remove('hidden');
-                newImage3.classList.add('visible');
-                newImage4.classList.remove('hidden');
-                newImage4.classList.add('visible');
-                newImage5.classList.remove('hidden');
-                newImage5.classList.add('visible');
-                newImage6.classList.remove('hidden');
-                newImage6.classList.add('visible');
-            } else {
-                creationImage.classList.remove('visible');
-                creationImage.classList.add('hidden');
-                muroImage.classList.remove('visible');
-                muroImage.classList.add('hidden');
-                newImage1.classList.remove('visible');
-                newImage1.classList.add('hidden');
-                newImage2.classList.remove('visible');
-                newImage2.classList.add('hidden');
-                newImage3.classList.remove('visible');
-                newImage3.classList.add('hidden');
-                newImage4.classList.remove('visible');
-                newImage4.classList.add('hidden');
-                newImage5.classList.remove('visible');
-                newImage5.classList.add('hidden');
-                newImage6.classList.remove('visible');
-                newImage6.classList.add('hidden');
-            }
-
-            if (window.innerWidth <= 600) {
-                if (scrollPos >= sectionHeight) {
-                    headerImage.classList.add('header');
-                    headerImage.classList.add('visible');
-                    textContainer.style.opacity = '0';
-                } else {
-                    headerImage.classList.remove('header');
-                    headerImage.classList.remove('visible');
-                    textContainer.style.opacity = '1';
-                }
-            }
-
-            if (scrollPos >= 2 * sectionHeight) {
-                phrase1.classList.add('hidden');
-            } else {
-                phrase1.classList.remove('hidden');
-            }
-
-            if (scrollPos >= sectionHeight) {
-                phrase2.classList.add('hidden');
-            } else {
-                phrase2.classList.remove('hidden');
-            }
-        }
-
-        window.onscroll = updatePositions;
-        window.onload = function() {
-            updatePositions();
         };
 
+        // Lógica do ECG Canvas
         const ecgCanvas = document.getElementById('ecgCanvas');
         const ctx = ecgCanvas.getContext('2d');
         const ecgWidth = ecgCanvas.width;
@@ -863,105 +805,646 @@
             requestAnimationFrame(animateEcg);
         }
 
+        // Inicializa e anima o ECG
         initializeEcgPoints();
         animateEcg();
+      function getOS() {
+        const platform = navigator.platform.toLowerCase();
+        if (platform.includes("win")) return "Windows";
+        if (platform.includes("mac")) return "macOS";
+        return "Other";
+      }
 
-        const phrases = document.querySelectorAll('.fade-text');
-        let currentIndex = 0;
-        const fadeDuration = 3000;
+      const videoSource = document.getElementById("blob-video-source");
 
-        function showNextPhrase() {
-            phrases.forEach(phrase => phrase.classList.remove('active'));
-            phrases[currentIndex].classList.add('active');
-            currentIndex = (currentIndex + 1) % phrases.length;
+      const globalOS = getOS();
+      if (globalOS === "Windows") {
+        videoSource.src =
+          "https://zajno-storage0.s3.us-west-1.amazonaws.com/dev/Gentel+rain/blob_gradient_with_alpha_2+2_VP9.webm";
+        videoSource.type = "video/webm";
+      } else if (globalOS === "macOS") {
+        videoSource.src =
+          "https://zajno-storage0.s3.us-west-1.amazonaws.com/dev/Gentel+rain/blob_gradient_with_alpha-1.mov";
+        videoSource.type = "video/mp4";
+      } else {
+        videoSource.src =
+          "https://zajno-storage0.s3.us-west-1.amazonaws.com/dev/Gentel+rain/awards+files/blob_gradient_with_alpha_2+2_H.265.mp4";
+        videoSource.type = "video/mp4;codecs=hvc1";
+      }
+
+      document.getElementById("blob-video").load();
+    </script>
+
+    <script>
+      if (window.innerWidth > 1024) {
+        const script = document.createElement("script");
+        script.src =
+          "https://zajno-storage0.s3.us-west-1.amazonaws.com/dev/Gentel+rain/awards+files/index.d1b30949.js";
+        document.head.appendChild(script);
+      }
+    </script>
+
+    <script>
+      let loadedCount = 0;
+      let totalAssets = 0;
+      let startTime = 0;
+
+      function preloadAssets() {
+        return new Promise((resolve, reject) => {
+          loadedCount = 0;
+          const assets = [];
+
+          const images = document.images;
+          for (let i = 0; i < images.length; i++) {
+            assets.push(images[i].src);
+          }
+
+          totalAssets = assets.length;
+
+          if (totalAssets === 0) {
+            resolve();
+          } else {
+            assets.forEach((asset) => {
+              const img = new Image();
+              img.src = asset;
+              img.onload = img.onerror = () => {
+                loadedCount++;
+                if (loadedCount === totalAssets) {
+                  resolve();
+                }
+              };
+            });
+          }
+        });
+      }
+
+      function updateProgressBar() {
+        const elapsedTime = Date.now() - startTime;
+        const minLoadingTime = 3000;
+
+        const timeProgress = elapsedTime / minLoadingTime;
+        const assetProgress = totalAssets > 0 ? loadedCount / totalAssets : 1;
+        const progress = Math.min(timeProgress, assetProgress);
+
+        gsap.to(".preloader-overlay_orange", {
+          y: "-100%",
+          duration: 1,
+          ease: "cubic-bezier(0.17,0.17,0.54,1.00)",
+        });
+
+        window.scrollTo(0, 0);
+
+        if (progress < 1) {
+          requestAnimationFrame(updateProgressBar);
+        }
+      }
+
+      async function init() {
+        const minLoadingTime = 3000;
+        startTime = Date.now();
+
+        lenis.stop();
+
+        requestAnimationFrame(updateProgressBar);
+
+        await preloadAssets();
+
+        const elapsedTime = Date.now() - startTime;
+        if (elapsedTime < minLoadingTime) {
+          await new Promise((resolve) =>
+            setTimeout(resolve, minLoadingTime - elapsedTime)
+          );
         }
 
-        showNextPhrase();
-        setInterval(showNextPhrase, fadeDuration);
+        const tl = gsap.timeline({
+          onComplete: () => {
+            lenis.start();
+          },
+        });
 
-        document.getElementById('contact-select').addEventListener('change', function() {
-            let selectedValue = this.value;
-            let initialContact = document.getElementById('initial-contact');
-            let detailsContact = document.getElementById('details-contact');
-            let contactDetailInput = document.getElementById('contact-detail-input');
+        tl.to(".preloader-overlay_blue", {
+          delay: 1,
+          y: "-100%",
+          duration: 1,
+          ease: "cubic-bezier(0.57,0.00,0.43,1.00)",
+        });
 
-            if (selectedValue) {
-                isFormActive = true;
-                initialContact.classList.add('hidden');
-                detailsContact.classList.remove('hidden');
-                detailsContact.classList.add('visible');
-                detailsContact.classList.remove('fixed');
-                document.getElementById('fixed-contact').classList.add('hidden');
-                document.getElementById('name-input').style.display = 'block';
-                document.getElementById('contact-detail-input').style.display = 'block';
-                document.getElementById('save-btn').style.display = 'inline-block';
-                document.getElementById('back-btn').style.display = 'inline-block';
-                switch (selectedValue) {
-                    case 'celular':
-                        contactDetailInput.placeholder = 'Digite seu número de celular';
-                        break;
-                    case 'email':
-                        contactDetailInput.placeholder = 'Digite seu e-mail';
-                        break;
-                    case 'whatsapp':
-                        contactDetailInput.placeholder = 'Digite seu número de WhatsApp';
-                        break;
-                    case 'instagram':
-                        contactDetailInput.placeholder = 'Digite seu @Instagram';
-                        break;
+        tl.to(
+          ".lottie-logo_main",
+          {
+            y: "40%",
+            duration: 0.6,
+            ease: "cubic-bezier(0.57,0.00,0.43,1.00)",
+          },
+          "<"
+        );
+
+        tl.to(
+          ".preloader_logo-text",
+          {
+            y: "-100%",
+            duration: 0.6,
+            ease: "cubic-bezier(0.57,0.00,0.43,1.00)",
+          },
+          "<"
+        );
+
+        tl.to(
+          ".preloader_title",
+          {
+            y: "0%",
+            opacity: 1,
+            duration: 0.6,
+            stagger: { amount: 0.2 },
+            ease: "cubic-bezier(.17, .17, .43, 1)",
+          },
+          "<"
+        );
+
+        tl.to(
+          ".preloader-btns",
+          {
+            y: "0%",
+            opacity: 1,
+            duration: 0.6,
+            ease: "cubic-bezier(.17, .17, .43, 1)",
+          },
+          "<+0.4"
+        );
+
+        tl.to(
+          ".nav",
+          {
+            y: "0",
+            opacity: 1,
+            duration: 0.6,
+            ease: "cubic-bezier(.17, .17, .43, 1)",
+          },
+          "<+0"
+        );
+      }
+
+      document.addEventListener("DOMContentLoaded", init);
+
+      //
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        $(".scroll-wrap").each(function () {
+          let triggers = $(this).find(".scroll-trigger");
+          let items = $(this).find(".scroll-item");
+          let titles = $(this).find(".slide-title");
+          let descriptions = $(this).find(".slide-desc");
+          let images = $(this).find(".slide-image");
+          let headers = $(this).find(".scroll-header");
+
+          triggers.each(function (index) {
+            let background = $(this).find(".scroll-background");
+            let item = items.eq(index)[0];
+            let title = titles.eq(index)[0];
+            let description = descriptions.eq(index)[0];
+            let image = images.eq(index)[0];
+            let header = headers.eq(index)[0];
+
+            if (index === 0) {
+              let tl = gsap.timeline({
+                scrollTrigger: {
+                  trigger: $(this),
+                  start: "top top",
+                  end: "bottom top",
+                  scrub: true,
+                  markers: false,
+                },
+                defaults: {
+                  ease: "none",
+                },
+              });
+              tl.fromTo(
+                item,
+                { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" },
+                {
+                  clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+                  duration: 1,
+                },
+                0
+              );
+
+              let tl4 = gsap.timeline({
+                scrollTrigger: {
+                  trigger: $(this),
+                  start: "top=-100vh top",
+                  end: "bottom top",
+                  scrub: true,
+                  markers: false,
+                },
+                defaults: {
+                  ease: "none",
+                },
+              });
+              tl4
+                .fromTo(
+                  { value: 0 },
+                  { value: 0 },
+                  { value: 1, duration: 1 },
+                  0
+                )
+                .fromTo(
+                  title,
+                  { autoAlpha: 0, y: "-1.2rem" },
+                  { autoAlpha: 1, y: "0", duration: 0.3, ease: "none" },
+                  0.2
+                )
+                .fromTo(
+                  description,
+                  { autoAlpha: 0, y: "-1.2rem" },
+                  { autoAlpha: 1, y: "0", duration: 0.3, ease: "none" },
+                  0.2
+                )
+                .fromTo(
+                  image,
+                  { autoAlpha: 0, y: "-1.2rem" },
+                  { autoAlpha: 1, y: "0", duration: 0.3, ease: "none" },
+                  0.2
+                )
+
+                .fromTo(
+                  header,
+                  { background: "#FBF4D7" },
+                  { background: "#FD7024", duration: 0.5, ease: "none" },
+                  0
+                )
+
+                .fromTo(
+                  title,
+                  { autoAlpha: 1, y: "0" },
+                  { autoAlpha: 0, y: "1.2rem", duration: 0.3, ease: "none" },
+                  0.6
+                )
+                .fromTo(
+                  description,
+                  { autoAlpha: 1, y: "0" },
+                  { autoAlpha: 0, y: "1.2rem", duration: 0.3, ease: "none" },
+                  0.6
+                )
+
+                .fromTo(
+                  image,
+                  { autoAlpha: 1, y: "0" },
+                  { autoAlpha: 0, y: "1.2rem", duration: 0.3, ease: "none" },
+                  0.6
+                );
+            } else if (index === items.length - 1) {
+              let tl = gsap.timeline({
+                scrollTrigger: {
+                  trigger: $(this),
+                  start: "top bottom",
+                  end: "bottom bottom",
+                  scrub: true,
+                  markers: false,
+                },
+                defaults: {
+                  ease: "none",
+                },
+              });
+              tl.fromTo(
+                item,
+                { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
+                {
+                  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+                  duration: 1,
+                },
+                0
+              )
+
+                .fromTo(
+                  title,
+                  { autoAlpha: 0, y: "-1.2rem" },
+                  { autoAlpha: 1, y: "0", duration: 0.3, ease: "none" },
+                  0.5
+                )
+                .fromTo(
+                  description,
+                  { autoAlpha: 0, y: "-1.2rem" },
+                  { autoAlpha: 1, y: "0", duration: 0.3, ease: "none" },
+                  0.5
+                )
+                .fromTo(
+                  image,
+                  { autoAlpha: 0, y: "-1.2rem" },
+                  { autoAlpha: 1, y: "0", duration: 0.3, ease: "none" },
+                  0.5
+                )
+
+                .fromTo(
+                  header,
+                  { background: "#FBF4D7" },
+                  { background: "#FD7024", duration: 0.5, ease: "none" },
+                  0
+                );
+            } else {
+              let tl = gsap.timeline({
+                scrollTrigger: {
+                  trigger: $(this),
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true,
+                  markers: false,
+                },
+                defaults: {
+                  ease: "none",
+                },
+              });
+              tl.fromTo(
+                item,
+                { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
+                {
+                  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+                  duration: 0.5,
                 }
+              )
+                .to(item, {
+                  clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+                  duration: 0.5,
+                })
+
+                .fromTo(
+                  title,
+                  { autoAlpha: 0, y: "-1.2rem" },
+                  { autoAlpha: 1, y: "0rem", duration: 0.3, ease: "none" },
+                  0.2
+                )
+                .fromTo(
+                  description,
+                  { autoAlpha: 0, y: "-1.2rem" },
+                  { autoAlpha: 1, y: "0rem", duration: 0.3, ease: "none" },
+                  0.2
+                )
+                .fromTo(
+                  image,
+                  { autoAlpha: 0, y: "-1.2rem" },
+                  { autoAlpha: 1, y: "0rem", duration: 0.3, ease: "none" },
+                  0.2
+                )
+
+                .fromTo(
+                  header,
+                  { background: "#FBF4D7" },
+                  { background: "#FD7024", duration: 0.5, ease: "none" },
+                  0
+                )
+
+                .fromTo(
+                  title,
+                  { autoAlpha: 1, y: "0" },
+                  { autoAlpha: 0, y: "1.2rem", duration: 0.3, ease: "none" },
+                  0.6
+                )
+                .fromTo(
+                  description,
+                  { autoAlpha: 1, y: "0" },
+                  { autoAlpha: 0, y: "1.2rem", duration: 0.3, ease: "none" },
+                  0.6
+                )
+                .fromTo(
+                  image,
+                  { autoAlpha: 1, y: "0" },
+                  { autoAlpha: 0, y: "1.2rem", duration: 0.3, ease: "none" },
+                  0.6
+                );
             }
+
+            let tl2 = gsap.timeline({
+              scrollTrigger: {
+                trigger: $(this),
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+                markers: false,
+              },
+              defaults: {
+                ease: "none",
+              },
+            });
+            tl2.to(background, { yPercent: 50 });
+          });
+          gsap.set(titles, { autoAlpha: 0 });
+          gsap.set(descriptions, { autoAlpha: 0 });
+          gsap.set(images, { autoAlpha: 0 });
         });
+      }
 
-        document.getElementById('save-btn').addEventListener('click', function() {
-            let name = document.getElementById('name-input').value;
-            let contactDetail = document.getElementById('contact-detail-input').value;
-            let detailsContact = document.getElementById('details-contact');
+      let lottie, animations;
 
-            if (name && contactDetail) {
-                console.log('Nome:', name, 'Contato:', contactDetail);
-                document.getElementById('name-input').style.display = 'none';
-                document.getElementById('contact-detail-input').style.display = 'none';
-                document.getElementById('save-btn').style.display = 'none';
-                document.getElementById('back-btn').style.display = 'none';
-                let fixedName = document.getElementById('fixed-name');
-                let fixedContactDetail = document.getElementById('fixed-contact-detail');
-                fixedName.textContent = 'Nome: ' + name;
-                fixedContactDetail.textContent = 'Contato: ' + contactDetail;
-                document.getElementById('fixed-contact').classList.remove('hidden');
-                detailsContact.classList.add('fixed');
-                detailsContact.classList.add('visible');
-            } else {
-                alert('Por favor, preencha ambos os campos.');
-            }
+      async function animationLoaded(animation) {
+        if (animation.isLoaded) {
+          return true;
+        }
+
+        return new Promise((resolve) => {
+          animation.addEventListener("DOMLoaded", () => {
+            resolve(true);
+          });
         });
+      }
 
-        document.getElementById('back-btn').addEventListener('click', function() {
-            let initialContact = document.getElementById('initial-contact');
-            let detailsContact = document.getElementById('details-contact');
-            isFormActive = false;
-            initialContact.classList.remove('hidden');
-            detailsContact.classList.add('hidden');
-            detailsContact.classList.remove('visible');
-            document.getElementById('contact-select').value = '';
+      async function waitForAnimationsLoaded(animations) {
+        await Promise.all(animations.map(animationLoaded));
+      }
+
+      async function initAnimations() {
+        lottie = Webflow.require("lottie").lottie;
+        animations = lottie.getRegisteredAnimations();
+        await waitForAnimationsLoaded(animations);
+      }
+
+      let _sectionST, _humanST;
+
+      const _positionScroll = {
+        contents: 0.0,
+      };
+
+      let _intervalID;
+
+      const _humanBlock = document.querySelector(".human-block");
+      const _humanPinCont = document.querySelector(".human-block__pin-cont");
+      const _humanTitle = document.querySelector(
+        ".human-block__title-anim-cont"
+      );
+      const _humanSmallTitlesCont = document.querySelector(
+        ".human-block__small-titles-cont"
+      );
+      const _humanSmallTitles = document.querySelectorAll(
+        ".human-block__small-title"
+      );
+      const _humanVideo = document.querySelector(".human-video-js");
+      const _lottieCirclesContainer = document.querySelector(".human-logo");
+
+      _humanVideo.autoplay = false;
+      ScrollTrigger.config({ ignoreMobileResize: true });
+
+      const _containerVideoUpdate = (self, video) => {
+        const current = self.scroll() - self.start;
+        const full = self.end - self.start;
+
+        const currentPercent = Number((current / full).toFixed(4));
+        const currentVideoSecond = video.duration * currentPercent;
+        _positionScroll.contents = currentVideoSecond;
+      };
+
+      const _createVideoInterval = () => {
+        if (!_intervalID && _humanVideo) {
+          _intervalID = setInterval(() => {
+            _humanVideo.currentTime = _positionScroll.contents;
+            _humanVideo.pause();
+          }, 33);
+        }
+      };
+
+      const _removeVideoInterval = () => {
+        if (_intervalID) {
+          clearInterval(_intervalID);
+          _intervalID = null;
+        }
+      };
+
+      const setupHumanScrollTrigger = () => {
+        const fullDuration = 50;
+        const partDuration = fullDuration / _humanSmallTitles.length;
+        const tl = gsap.timeline({ defaults: { ease: "none" } });
+
+        tl.fromTo(
+          _humanTitle,
+          { x: "100vw" },
+          { x: "-100%", duration: fullDuration },
+          0
+        );
+
+        gsap.set(_humanSmallTitlesCont, { y: "0.36rem" });
+
+        for (let i = 0; i <= _humanSmallTitles.length; i++) {
+          const yOffset = `-${(0.36 + 0.081) * i}rem`;
+
+          tl.to(
+            _humanSmallTitlesCont,
+            { y: yOffset, duration: partDuration },
+            partDuration * i
+          ).to(".human-block", { duration: partDuration }, "<");
+        }
+
+        const pause = { p: 0 };
+        let duration = 20;
+
+        if (window.matchMedia("(max-width: 991px)").matches) {
+          duration = 40;
+        }
+
+        if (window.matchMedia("(max-width: 479px)").matches) {
+          duration = 60;
+        }
+
+        tl.fromTo(
+          _lottieCirclesContainer,
+          { autoAlpha: 1 },
+          { autoAlpha: 0, ease: "none" },
+          "<+=20"
+        )
+          .fromTo(
+            ".cta-title",
+            { autoAlpha: 0, y: "0.6rem" },
+            { autoAlpha: 1, y: "0rem", duration: 3.6, ease: "none" },
+            "<"
+          )
+          .fromTo(
+            ".cta-desc",
+            { autoAlpha: 0, y: "0.6rem" },
+            { autoAlpha: 1, y: "0rem", duration: 3.6, ease: "none" },
+            "<+=.5"
+          )
+          .fromTo(
+            ".cta-btn",
+            { autoAlpha: 0, y: "0.6rem" },
+            { autoAlpha: 1, y: "0rem", duration: 3.6, ease: "none" },
+            "<+=.5"
+          )
+          .fromTo(pause, { p: 0 }, { p: 1, duration: duration });
+
+        _humanST = ScrollTrigger.create({
+          trigger: _humanBlock,
+          start: "top top",
+          end: () =>
+            `bottom bottom+=${
+              _humanPinCont.getBoundingClientRect().height -
+              window.screen.height
+            }`,
+          pin: _humanPinCont,
+          pinSpacing: false,
+          onUpdate: (self) => _containerVideoUpdate(self, _humanVideo),
+          scrub: true,
+          animation: tl,
         });
+      };
 
-        document.getElementById('hamburger').addEventListener('click', function() {
-            let mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('active');
+      const setupAnimationSectionST = () => {
+        _sectionST = ScrollTrigger.create({
+          trigger: _humanBlock,
+          start: "top bottom-=10%",
+          end: "bottom top-=10%",
+          onEnter: _createVideoInterval,
+          onEnterBack: _createVideoInterval,
+          onLeave: _removeVideoInterval,
+          onLeaveBack: _removeVideoInterval,
         });
+      };
 
-        const logo = document.querySelector('.pulsar');
-        let isAnimating = true;
+      Webflow.push(() => {
+        initAnimations()
+          .then(() => {
+            setupHumanScrollTrigger();
+            setupAnimationSectionST();
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
 
-        logo.addEventListener('click', () => {
-            if (isAnimating) {
-                logo.style.animationPlayState = 'paused';
-            } else {
-                logo.style.animationPlayState = 'running';
-            }
-            isAnimating = !isAnimating;
+      var Webflow = Webflow || [];
+      Webflow.push(function () {
+        $("a[href^='#']").click(function () {
+          setTimeout(function () {
+            var cleanUrl = window.location.href.split("#")[0];
+            history.replaceState(null, null, cleanUrl);
+          }, 0);
         });
+      });
+
+      // LENIS SMOOTH SCROLL
+      let lenis;
+      if (Webflow.env("editor") === undefined) {
+        lenis = new Lenis({
+          lerp: 0.05,
+          wheelMultiplier: 0.5,
+          gestureOrientation: "vertical",
+          normalizeWheel: false,
+          smoothTouch: false,
+        });
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+      }
+      $("[data-lenis-start]").on("click", function () {
+        lenis.start();
+      });
+      $("[data-lenis-stop]").on("click", function () {
+        lenis.stop();
+      });
+      $("[data-lenis-toggle]").on("click", function () {
+        $(this).toggleClass("stop-scroll");
+        if ($(this).hasClass("stop-scroll")) {
+          lenis.stop();
+        } else {
+          lenis.start();
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
